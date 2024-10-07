@@ -7,9 +7,12 @@ import string
 from rdkit import Chem
 from rdkit.Chem.Draw import rdMolDraw2D
 import re
-
+import rdkit
 
 nltk.download('stopwords')
+
+rdkit.RDLogger.DisableLog('rdApp.*')
+rdkit.RDLogger.EnableLog('rdApp.*')
 
 russian_stopwords = set(stopwords.words('russian'))
 
@@ -43,7 +46,6 @@ def standardize_chemical_formula(text):
         try:
             mol = Chem.MolFromSmiles(formula)
             if mol:
-                # Generate 2D coordinates
                 mol = Chem.AddHs(mol)  # Add hydrogens for better depiction
                 rdMolDraw2D.PrepareMolForDrawing(mol)
 
@@ -54,6 +56,15 @@ def standardize_chemical_formula(text):
         return f"[CHEM]{formula}[/CHEM]"
 
     return re.sub(r'([A-Z][a-z]?\d*(\(|\[|\{).*?(\)|\]|\})|[A-Z][a-z]?\d*[^A-Za-z\s]+)', replace_formula, text)
+
+
+def mark_formula_with_text(text):
+    pattern = r'[A-Za-z]+(?:_[A-Za-z]+)?\s*(?:[=~]+|\s*≈\s*)\s*[^\s]+'
+
+    def replace_formula(match):
+        formula = match.group(0)
+        return f" {"ывжифлспдлиыво"} {formula} {"ывжифлспдлиыво"} "
+    return re.sub(pattern,  replace_formula, text)
 
 
 class TextPreprocessor:
@@ -76,7 +87,7 @@ class TextPreprocessor:
 
     def phys_formula_prepare(self):
         """Работает с физическими формулами"""
-        pass
+        self.df["body"] = self.df["body"].apply(mark_formula_with_text)
 
     def remove_punctuation(self, columns: list):
         """Удаляет пунктуация в нужных столбцах"""
@@ -120,27 +131,19 @@ class TextPreprocessor:
         """Удаление поломанных строк"""
         self.df = self.df.dropna()
 
+    def drop_columns(self, columns_to_drop: list):
+        self.df = self.df.drop(columns=columns_to_drop)
 
-# def split_and_rename_columns(dataframe: pd.DataFrame, column_names: list) -> pd.DataFrame:
-#     """
-#     Делит каждый DataFrame в списке по символу \t и присваивает имена столбцам.
-#
-#     :param dataframes: список pandas DataFrame, каждый с одной колонкой
-#     :param column_names: список из шести строк, представляющих имена для новых столбцов
-#     :return: список DataFrame, где каждая строка разделена на шесть столбцов с заданными именами
-#     """
-#
-#     # Разделяем столбец по символу \t
-#     split_df = dataframe.iloc[:, 0].str.split('\t', expand=True)
-#
-#     # Присваиваем имена столбцам
-#     split_df.columns = column_names
-#     split_df = split_df[column_names]
-#
-#     return split_df
+    def remove_english_strings(self):
+        self.df['latin_ratio'] = self.df['body'].apply(
+            lambda s: sum(c.isalpha() and c.lower() in 'abcdefghijklmnopqrstuvwxyz' for c in s) / len(s) if isinstance(
+                s, str) else 0
+        )
+        self.df = self.df[self.df['latin_ratio'] <= 0.6].drop('latin_ratio', axis=1)
 
 
-df = pd.read_csv("datasets/datatsets_from_git/train/train_ru_work.csv", on_bad_lines='skip', sep='\t').head(1000)
+df = pd.read_csv("datasets/datatsets_from_git/train/train_ru_work.csv",
+                 on_bad_lines='skip', sep='\t').head(10000)
 # print(df.columns)
 preprocessor = TextPreprocessor(df)
 print(1)
@@ -148,14 +151,15 @@ print(1)
 # Последовательно применяем функции
 preprocessor.drop_nan()
 preprocessor.chem_formula_prepare()
+preprocessor.phys_formula_prepare()
+preprocessor.remove_english_strings()
 preprocessor.lemmatize(['title', 'body', 'keywords'])
 preprocessor.remove_punctuation(['title', 'body'])
 # # preprocessor.stem(['text_column'])
-print(3)
 preprocessor.remove_stop_words(['title', 'body'])
 preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
 preprocessor.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
-print(4)
+preprocessor.drop_columns(["correct"])
 preprocessor.save_to_csv("datasets/datasets_final/train_refactored_lematize.csv")
 
 # print(preprocessor.df)

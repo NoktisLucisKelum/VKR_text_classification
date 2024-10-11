@@ -8,6 +8,11 @@ from rdkit import Chem
 from rdkit.Chem.Draw import rdMolDraw2D
 import re
 import rdkit
+import difflib
+
+
+import warnings
+warnings.filterwarnings("ignore")
 
 nltk.download('stopwords')
 
@@ -65,6 +70,26 @@ def mark_formula_with_text(text):
         formula = match.group(0)
         return f" {"ывжифлспдлиыво"} {formula} {"ывжифлспдлиыво"} "
     return re.sub(pattern,  replace_formula, text)
+
+
+def split_words(word_list):
+    result = []
+    for word in word_list:
+        result.extend(word.split('\\'))  # Разделяем слова по символу '\'
+    return result
+
+
+def highlight_similar_words(words_list, reference_list, threshold=0.9):
+    highlighted_words = []
+    for word in words_list:
+        # Находим наиболее похожее слово из reference_list
+        matches = difflib.get_close_matches(word, reference_list, n=1, cutoff=threshold)
+        if matches:
+            # Если есть совпадение, оборачиваем слово в 'jfisblaku vhsljdka'
+            highlighted_words.append(f'jfisblaku {word} vhsljdka')
+        else:
+            highlighted_words.append(word)
+    return highlighted_words
 
 
 class TextPreprocessor:
@@ -141,12 +166,24 @@ class TextPreprocessor:
         )
         self.df = self.df[self.df['latin_ratio'] <= 0.6].drop('latin_ratio', axis=1)
 
+    def merge_and_drop_columns(self, column1: str, column2: str):
+        self.df[column1] = self.df[column1] + self.df[column2]
+        self.df.drop(column2, axis=1, inplace=True)
+
+    def repare_columns(self):
+        self.df['keywords'] = self.df['keywords'].apply(split_words)
+        self.df['body'] = self.df.apply(lambda row: highlight_similar_words(row['body'], row['keywords']), axis=1)
+
+    def printing(self, column: str):
+        print(type(self.df[column]), self.df[column].head(10))
+
 
 df = pd.read_csv("datasets/datatsets_from_git/train/train_ru_work.csv",
-                 on_bad_lines='skip', sep='\t').head(10000)
+                 on_bad_lines='skip', sep='\t').head(20000)
+
+print(type(df["RGNTI1"]))
 # print(df.columns)
 preprocessor = TextPreprocessor(df)
-print(1)
 
 # Последовательно применяем функции
 preprocessor.drop_nan()
@@ -160,6 +197,8 @@ preprocessor.remove_stop_words(['title', 'body'])
 preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
 preprocessor.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
 preprocessor.drop_columns(["correct"])
+preprocessor.merge_and_drop_columns('body', 'title')
+preprocessor.printing('body')
+preprocessor.printing('keywords')
+preprocessor.repare_columns()
 preprocessor.save_to_csv("datasets/datasets_final/train_refactored_lematize.csv")
-
-# print(preprocessor.df)

@@ -68,28 +68,31 @@ def mark_formula_with_text(text):
 
     def replace_formula(match):
         formula = match.group(0)
-        return f" {"ывжифлспдлиыво"} {formula} {"ывжифлспдлиыво"} "
+        return f" {"ывжифлспдлиыво"}{formula}{"ывжифлспдлиыво"} "
     return re.sub(pattern,  replace_formula, text)
 
 
 def split_words(word_list):
     result = []
-    for word in word_list:
+    for word in word_list.split():
         result.extend(word.split('\\'))  # Разделяем слова по символу '\'
-    return result
+    return ' '.join(result)
 
 
-def highlight_similar_words(words_list, reference_list, threshold=0.9):
+def highlight_similar_words(text, reference, threshold=0.9):
+    words_list = text.split()  # Разбиваем строку на слова
     highlighted_words = []
+    reference_list = reference.split(' ')
     for word in words_list:
         # Находим наиболее похожее слово из reference_list
         matches = difflib.get_close_matches(word, reference_list, n=1, cutoff=threshold)
         if matches:
             # Если есть совпадение, оборачиваем слово в 'jfisblaku vhsljdka'
-            highlighted_words.append(f'jfisblaku {word} vhsljdka')
+            highlighted_words.append(f'jfisblaku_{word}_vhsljdka')
         else:
             highlighted_words.append(word)
-    return highlighted_words
+    return ' '.join(highlighted_words)  # Объединяем слова обратно в строку
+
 
 
 class TextPreprocessor:
@@ -179,7 +182,7 @@ class TextPreprocessor:
 
 
 df = pd.read_csv("datasets/datatsets_from_git/train/train_ru_work.csv",
-                 on_bad_lines='skip', sep='\t').head(20000)
+                 on_bad_lines='skip', sep='\t')
 
 print(type(df["RGNTI1"]))
 # print(df.columns)
@@ -194,11 +197,11 @@ preprocessor.lemmatize(['title', 'body', 'keywords'])
 preprocessor.remove_punctuation(['title', 'body'])
 # # preprocessor.stem(['text_column'])
 preprocessor.remove_stop_words(['title', 'body'])
-preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
+# preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
 preprocessor.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
 preprocessor.drop_columns(["correct"])
 preprocessor.merge_and_drop_columns('body', 'title')
-preprocessor.printing('body')
-preprocessor.printing('keywords')
+# preprocessor.printing('body')
+# preprocessor.printing('keywords')
 preprocessor.repare_columns()
 preprocessor.save_to_csv("datasets/datasets_final/train_refactored_lematize.csv")

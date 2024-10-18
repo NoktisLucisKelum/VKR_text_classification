@@ -11,9 +11,9 @@ def plot_bar_chart_frequency(df, column_name):
     plt.bar(value_counts.index.astype(str), value_counts.values) # Преобразуем индексы в строки
 
     # Настраиваем оси и заголовок
-    plt.xlabel('Двузначные числа')
+    plt.xlabel('RGNTI1')
     plt.ylabel('Частота встречаемости')
-    plt.title('Частота встречаемости двузначных чисел')
+    plt.title('Частота встречаемости статей с данной тематикой')
 
     # Отображаем график
     plt.show()
@@ -21,7 +21,4 @@ def plot_bar_chart_frequency(df, column_name):
 
 df = pd.read_csv('datasets/datasets_final/train_refactored_lematize.csv')
 plot_bar_chart_frequency(df, "RGNTI1")
-
-
-
 

@@ -19,6 +19,6 @@ def plot_bar_chart_frequency(df, column_name):
     plt.show()
 
 
-df = pd.read_csv('datasets/datasets_final/train_refactored_lematize.csv')
+df = pd.read_csv('../datasets/datasets_final/train_refactored_lematize.csv')
 plot_bar_chart_frequency(df, "RGNTI1")
 

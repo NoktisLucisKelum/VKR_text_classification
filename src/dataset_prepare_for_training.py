@@ -181,7 +181,7 @@ class TextPreprocessor:
         print(type(self.df[column]), self.df[column].head(10))
 
 
-df = pd.read_csv("datasets/datatsets_from_git/train/train_ru_work.csv",
+df = pd.read_csv("../datasets/datatsets_from_git/train/train_ru_work.csv",
                  on_bad_lines='skip', sep='\t')
 
 print(type(df["RGNTI1"]))

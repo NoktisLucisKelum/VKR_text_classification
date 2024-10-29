@@ -9,9 +9,8 @@ from rdkit.Chem.Draw import rdMolDraw2D
 import re
 import rdkit
 import difflib
-
-
 import warnings
+
 warnings.filterwarnings("ignore")
 
 nltk.download('stopwords')
@@ -94,7 +93,6 @@ def highlight_similar_words(text, reference, threshold=0.9):
     return ' '.join(highlighted_words)  # Объединяем слова обратно в строку
 
 
-
 class TextPreprocessor:
     def __init__(self, df):
         self.df = df
@@ -160,9 +158,11 @@ class TextPreprocessor:
         self.df = self.df.dropna()
 
     def drop_columns(self, columns_to_drop: list):
+        """Удаление столбцов"""
         self.df = self.df.drop(columns=columns_to_drop)
 
     def remove_english_strings(self):
+        """Удаление строк где моного латинских букв"""
         self.df['latin_ratio'] = self.df['body'].apply(
             lambda s: sum(c.isalpha() and c.lower() in 'abcdefghijklmnopqrstuvwxyz' for c in s) / len(s) if isinstance(
                 s, str) else 0
@@ -170,21 +170,32 @@ class TextPreprocessor:
         self.df = self.df[self.df['latin_ratio'] <= 0.6].drop('latin_ratio', axis=1)
 
     def merge_and_drop_columns(self, column1: str, column2: str):
+        """Соединяет тело статьи и название"""
         self.df[column1] = self.df[column1] + self.df[column2]
         self.df.drop(column2, axis=1, inplace=True)
 
     def repare_columns(self):
+        """делит ключевые слова на двое"""
         self.df['keywords'] = self.df['keywords'].apply(split_words)
         self.df['body'] = self.df.apply(lambda row: highlight_similar_words(row['body'], row['keywords']), axis=1)
+
+    # def refactor(self):
+    #     """Превращает столбцы int в str"""
+    #     self.df["RGNTI1"] = self.df["RGNTI1"].apply(str)
+    #     self.df["RGNTI2"] = self.df["RGNTI2"].apply(str)
+    #     self.df["RGNTI3"] = self.df["RGNTI3"].apply(str)
 
     def printing(self, column: str):
         print(type(self.df[column]), self.df[column].head(10))
 
+    def astp(self, column: str):
+        """Выводит тип колонки"""
+        print(self.df[column].dtype)
 
-df = pd.read_csv("../datasets/datatsets_from_git/train/train_ru_work.csv",
-                 on_bad_lines='skip', sep='\t')
 
-print(type(df["RGNTI1"]))
+df = pd.read_csv("../VKR/datasets/datasets_final/train_refactored_lematize.csv")
+
+print(df.columns)
 # print(df.columns)
 preprocessor = TextPreprocessor(df)
 
@@ -204,4 +215,5 @@ preprocessor.merge_and_drop_columns('body', 'title')
 # preprocessor.printing('body')
 # preprocessor.printing('keywords')
 preprocessor.repare_columns()
-preprocessor.save_to_csv("datasets/datasets_final/train_refactored_lematize.csv")
+
+preprocessor.save_to_csv("../VKR/datasets/datasets_final/train_refactored_lematize.csv")

@@ -47,11 +47,14 @@ class DataFrameProcessor:
 
     def pad_single_char_values(self, column_name):
         """Добавляет '0' перед строками с одним символом в указанном столбце."""
-        if column_name not in self.dataframe.columns:
-            raise ValueError(f"Столбец '{column_name}' не найден в DataFrame.")
-
         self.dataframe[column_name] = self.dataframe[column_name].apply(
             lambda x: '0' + x if isinstance(x, str) and len(x) == 1 else x
+        )
+
+    def pad_single_char_values_reverse(self, column_name):
+        """Добавляет '0' перед строками с одним символом в указанном столбце."""
+        self.dataframe[column_name] = self.dataframe[column_name].apply(
+            lambda x: x + '0' if isinstance(x, str) and len(x) == 4 else x
         )
 
 
@@ -81,51 +84,53 @@ def limit_unique_values_tail(df: pandas.DataFrame, column_name: str, n=40) -> pd
     return result_df
 
 
-df_null = limit_unique_values_tail(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
-                      '/test_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str}), 'RGNTI1')
-proc_null = DataFrameProcessor(df_null)
-proc_null.pad_single_char_values('RGNTI1')
-proc_null.delete_strings(['0', '59', '58', '86', '00'])
-
-proc_null.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_small/train_refactored_small_validation.csv')
-
-df_zero = limit_unique_values(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
-                      '/test_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str}), 'RGNTI1')
-df_one = limit_unique_values(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
-                  '/train_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str}), 'RGNTI1')
-
-proc_zero = DataFrameProcessor(df_zero)
-proc_zero.pad_single_char_values('RGNTI1')
-proc_zero.delete_strings(['59', '58', '86', '00'])
-
-proc_one = DataFrameProcessor(df_one)
-proc_one.pad_single_char_values('RGNTI1')
-proc_one.delete_strings(['59', '58', '86', '00'])
-
-proc_one.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_small/train_refactored_small.csv')
-proc_zero.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_small/test_refactored_small.csv')
-
-# df = pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
-#                  '/test_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
-# # print(df["RGNTI1"].dtype)
-# # print(df[df['RGNTI1'] == '58'])
-# preprocessor_1 = DataFrameProcessor(df)
-# preprocessor_1.unique_counts_level_1()
-# preprocessor_1.delete_strings(['0', '59', '58', '86', '00'])
-# preprocessor_1.limit_unique_rows("RGNTI1", "34", 17000)
-# preprocessor_1.unique_counts_level_1()
-# preprocessor_1.pad_single_char_values('RGNTI1')
-# preprocessor_1.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/test_refactored_lematize_cut_final.csv')
+# df_null = limit_unique_values_tail(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
+#                       '/test_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str}), 'RGNTI1')
+# proc_null = DataFrameProcessor(df_null)
+# proc_null.pad_single_char_values('RGNTI1')
+# proc_null.delete_strings(['0', '59', '58', '86', '00'])
 #
+# proc_null.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_small/train_refactored_small_validation.csv')
 #
-# df_new = pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
-#                  '/train_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
-# # print(df["RGNTI1"].dtype)
-# # print(df[df['RGNTI1'] == '58'])
-# preprocessor = DataFrameProcessor(df_new)
-# preprocessor.unique_counts_level_1()
-# preprocessor.delete_strings(['0', '59', '58', '86', '00'])
-# preprocessor.limit_unique_rows("RGNTI1", "34", 28000)
-# preprocessor.unique_counts_level_1()
-# preprocessor.pad_single_char_values('RGNTI1')
-# preprocessor.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv')
+# df_zero = limit_unique_values(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
+#                       '/test_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str}), 'RGNTI1')
+# df_one = limit_unique_values(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
+#                   '/train_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str}), 'RGNTI1')
+#
+# proc_zero = DataFrameProcessor(df_zero)
+# proc_zero.pad_single_char_values('RGNTI1')
+# proc_zero.delete_strings(['59', '58', '86', '00'])
+#
+# proc_one = DataFrameProcessor(df_one)
+# proc_one.pad_single_char_values('RGNTI1')
+# proc_one.delete_strings(['59', '58', '86', '00'])
+#
+# proc_one.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_small/train_refactored_small.csv')
+# proc_zero.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_small/test_refactored_small.csv')
+"""__________________________________"""
+df = pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
+                 '/test_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
+# print(df["RGNTI1"].dtype)
+# print(df[df['RGNTI1'] == '58'])
+preprocessor_1 = DataFrameProcessor(df)
+preprocessor_1.unique_counts_level_1()
+preprocessor_1.delete_strings(['0', '59', '58', '86', '00'])
+preprocessor_1.limit_unique_rows("RGNTI1", "34", 17000)
+preprocessor_1.unique_counts_level_1()
+preprocessor_1.pad_single_char_values('RGNTI1')
+preprocessor_1.pad_single_char_values_reverse('RGNTI2')
+preprocessor_1.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/test_refactored_lematize_cut_final.csv')
+
+
+df_new = pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
+                 '/train_refactored_lematize.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
+# print(df["RGNTI1"].dtype)
+# print(df[df['RGNTI1'] == '58'])
+preprocessor = DataFrameProcessor(df_new)
+preprocessor.unique_counts_level_1()
+preprocessor.delete_strings(['0', '59', '58', '86', '00'])
+preprocessor.limit_unique_rows("RGNTI1", "34", 28000)
+preprocessor.unique_counts_level_1()
+preprocessor.pad_single_char_values('RGNTI1')
+preprocessor.pad_single_char_values_reverse('RGNTI2')
+preprocessor.save_dataset('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv')

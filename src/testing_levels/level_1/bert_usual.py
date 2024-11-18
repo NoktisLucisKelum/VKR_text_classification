@@ -10,14 +10,16 @@ import numpy as np
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 EPOCHS = 5
 # Загружаем данные
-train_df = pd.read_csv("/datasets/datasets_small/train_refactored_small.csv",
+train_df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/"
+                       "datasets/datasets_small/train_refactored_small.csv",
                        dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 print(train_df['RGNTI1'].value_counts())
-valid_df = pd.read_csv(
-    "/datasets/datasets_small/train_refactored_small_validation.csv",
-    dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
+valid_df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/"
+                       "datasets_small/train_refactored_small_validation.csv",
+                        dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 print(valid_df['RGNTI1'].value_counts())
-test_df = pd.read_csv("/datasets/datasets_small/test_refactored_small.csv",
+test_df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/"
+                      "datasets_small/test_refactored_small.csv",
                       dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 print(test_df['RGNTI1'].value_counts())
 
@@ -28,7 +30,7 @@ valid_df['RGNTI1'] = label_encoder.transform(valid_df['RGNTI1'])
 test_df['RGNTI1'] = label_encoder.transform(test_df['RGNTI1'])
 
 # Используем BertTokenizer для токенизации текстов
-tokenizer = BertTokenizer.from_pretrained('bert-base-multilingual-cased')
+tokenizer = BertTokenizer.from_pretrained('DeepPavlov/rubert-base-cased')
 
 
 # Создаем кастомный датасет
@@ -86,7 +88,7 @@ valid_data_loader = create_data_loader(valid_df, tokenizer, MAX_LEN, BATCH_SIZE)
 test_data_loader = create_data_loader(test_df, tokenizer, MAX_LEN, BATCH_SIZE)
 
 # Инициализируем модель BERT для классификации последовательностей
-model = BertForSequenceClassification.from_pretrained('bert-base-multilingual-cased',
+model = BertForSequenceClassification.from_pretrained('DeepPavlov/rubert-base-cased',
                                                       num_labels=len(label_encoder.classes_))
 model = model.to(device)
 

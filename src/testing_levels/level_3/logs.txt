@@ -1,0 +1,753 @@
+
+15.25 удалить!!!!!!
+catboost:
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/bin/python /Users/denismazepa/Desktop/Py_projects/VKR/src/testing_levels/level_3/testing_catboost_etc.py
+5941
+1
+2
+3
+0:	learn: 3.0053833	total: 488ms	remaining: 8m 7s
+1:	learn: 2.9122632	total: 934ms	remaining: 7m 46s
+2:	learn: 2.8465746	total: 1.39s	remaining: 7m 41s
+3:	learn: 2.7879922	total: 1.81s	remaining: 7m 31s
+4:	learn: 2.7415233	total: 2.24s	remaining: 7m 25s
+5:	learn: 2.6928237	total: 2.66s	remaining: 7m 21s
+6:	learn: 2.6581716	total: 3.09s	remaining: 7m 18s
+7:	learn: 2.6279492	total: 3.51s	remaining: 7m 15s
+8:	learn: 2.5929839	total: 3.93s	remaining: 7m 12s
+9:	learn: 2.5741258	total: 4.36s	remaining: 7m 11s
+10:	learn: 2.5470664	total: 4.79s	remaining: 7m 10s
+11:	learn: 2.5204573	total: 5.22s	remaining: 7m 9s
+12:	learn: 2.4999352	total: 5.64s	remaining: 7m 8s
+13:	learn: 2.4714890	total: 6.07s	remaining: 7m 7s
+14:	learn: 2.4533210	total: 6.51s	remaining: 7m 7s
+15:	learn: 2.4331278	total: 6.93s	remaining: 7m 6s
+16:	learn: 2.4144882	total: 7.36s	remaining: 7m 5s
+17:	learn: 2.4013837	total: 7.79s	remaining: 7m 5s
+18:	learn: 2.3848578	total: 8.25s	remaining: 7m 5s
+19:	learn: 2.3712015	total: 8.68s	remaining: 7m 5s
+20:	learn: 2.3556441	total: 9.12s	remaining: 7m 5s
+21:	learn: 2.3413218	total: 9.55s	remaining: 7m 4s
+22:	learn: 2.3307835	total: 9.97s	remaining: 7m 3s
+23:	learn: 2.3222813	total: 10.4s	remaining: 7m 2s
+24:	learn: 2.3058365	total: 10.8s	remaining: 7m 1s
+25:	learn: 2.2927092	total: 11.2s	remaining: 7m
+26:	learn: 2.2781258	total: 11.7s	remaining: 7m
+27:	learn: 2.2694536	total: 12.1s	remaining: 6m 59s
+28:	learn: 2.2592706	total: 12.5s	remaining: 6m 58s
+29:	learn: 2.2509593	total: 12.9s	remaining: 6m 58s
+30:	learn: 2.2426706	total: 13.4s	remaining: 6m 57s
+31:	learn: 2.2320845	total: 13.8s	remaining: 6m 57s
+32:	learn: 2.2228508	total: 14.2s	remaining: 6m 56s
+33:	learn: 2.2145476	total: 14.6s	remaining: 6m 55s
+34:	learn: 2.2007819	total: 15.1s	remaining: 6m 55s
+35:	learn: 2.1902432	total: 15.5s	remaining: 6m 54s
+36:	learn: 2.1778780	total: 15.9s	remaining: 6m 54s
+37:	learn: 2.1692115	total: 16.3s	remaining: 6m 53s
+38:	learn: 2.1611831	total: 16.8s	remaining: 6m 52s
+39:	learn: 2.1562294	total: 17.2s	remaining: 6m 52s
+40:	learn: 2.1481840	total: 17.6s	remaining: 6m 51s
+41:	learn: 2.1381376	total: 18s	remaining: 6m 51s
+42:	learn: 2.1311673	total: 18.4s	remaining: 6m 50s
+43:	learn: 2.1219393	total: 18.9s	remaining: 6m 50s
+44:	learn: 2.1157911	total: 19.3s	remaining: 6m 49s
+45:	learn: 2.1095905	total: 19.7s	remaining: 6m 49s
+46:	learn: 2.1034308	total: 20.2s	remaining: 6m 48s
+47:	learn: 2.0935351	total: 20.6s	remaining: 6m 48s
+48:	learn: 2.0880620	total: 21s	remaining: 6m 47s
+49:	learn: 2.0822593	total: 21.4s	remaining: 6m 47s
+50:	learn: 2.0772547	total: 21.9s	remaining: 6m 46s
+51:	learn: 2.0696582	total: 22.3s	remaining: 6m 46s
+52:	learn: 2.0660357	total: 22.7s	remaining: 6m 45s
+53:	learn: 2.0582546	total: 23.1s	remaining: 6m 45s
+54:	learn: 2.0522262	total: 23.6s	remaining: 6m 44s
+55:	learn: 2.0479556	total: 24s	remaining: 6m 44s
+56:	learn: 2.0408354	total: 24.4s	remaining: 6m 44s
+57:	learn: 2.0350497	total: 24.8s	remaining: 6m 43s
+58:	learn: 2.0299747	total: 25.3s	remaining: 6m 43s
+59:	learn: 2.0234469	total: 25.7s	remaining: 6m 42s
+60:	learn: 2.0186598	total: 26.1s	remaining: 6m 42s
+61:	learn: 2.0123342	total: 26.6s	remaining: 6m 42s
+62:	learn: 2.0056144	total: 27s	remaining: 6m 41s
+63:	learn: 2.0023740	total: 27.4s	remaining: 6m 41s
+64:	learn: 1.9982535	total: 27.9s	remaining: 6m 40s
+65:	learn: 1.9924190	total: 28.3s	remaining: 6m 40s
+66:	learn: 1.9870356	total: 28.7s	remaining: 6m 39s
+67:	learn: 1.9815716	total: 29.1s	remaining: 6m 39s
+68:	learn: 1.9765584	total: 29.6s	remaining: 6m 38s
+69:	learn: 1.9714875	total: 30s	remaining: 6m 38s
+70:	learn: 1.9671890	total: 30.4s	remaining: 6m 37s
+71:	learn: 1.9636201	total: 30.8s	remaining: 6m 37s
+72:	learn: 1.9580510	total: 31.2s	remaining: 6m 36s
+73:	learn: 1.9513799	total: 31.7s	remaining: 6m 36s
+74:	learn: 1.9406319	total: 32.1s	remaining: 6m 35s
+75:	learn: 1.9347480	total: 32.5s	remaining: 6m 35s
+76:	learn: 1.9282953	total: 32.9s	remaining: 6m 34s
+77:	learn: 1.9223746	total: 33.4s	remaining: 6m 34s
+78:	learn: 1.9159884	total: 33.8s	remaining: 6m 34s
+79:	learn: 1.9118457	total: 34.2s	remaining: 6m 33s
+80:	learn: 1.9044707	total: 34.7s	remaining: 6m 33s
+81:	learn: 1.8985345	total: 35.1s	remaining: 6m 32s
+82:	learn: 1.8920142	total: 35.6s	remaining: 6m 32s
+83:	learn: 1.8841503	total: 36s	remaining: 6m 32s
+84:	learn: 1.8785360	total: 36.4s	remaining: 6m 32s
+85:	learn: 1.8712552	total: 36.9s	remaining: 6m 31s
+86:	learn: 1.8649688	total: 37.3s	remaining: 6m 31s
+87:	learn: 1.8610537	total: 37.8s	remaining: 6m 31s
+88:	learn: 1.8548689	total: 38.3s	remaining: 6m 31s
+89:	learn: 1.8496400	total: 38.8s	remaining: 6m 32s
+90:	learn: 1.8439608	total: 39.5s	remaining: 6m 34s
+91:	learn: 1.8390590	total: 40.3s	remaining: 6m 37s
+92:	learn: 1.8330730	total: 41s	remaining: 6m 39s
+93:	learn: 1.8266470	total: 41.7s	remaining: 6m 42s
+94:	learn: 1.8222095	total: 42.5s	remaining: 6m 44s
+95:	learn: 1.8178044	total: 43.2s	remaining: 6m 46s
+96:	learn: 1.8134831	total: 44s	remaining: 6m 49s
+97:	learn: 1.8082725	total: 44.6s	remaining: 6m 50s
+98:	learn: 1.8012132	total: 45s	remaining: 6m 49s
+99:	learn: 1.7931316	total: 45.5s	remaining: 6m 49s
+
+Accuracy: 0.6963835155592936
+F1 Score: 0.68
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Classification Report:n               precision    recall  f1-score   support
+
+    34.39.03       0.59      0.28      0.38        71
+    34.39.05       0.00      0.00      0.00         2
+    34.39.15       0.62      0.86      0.72       136
+    34.39.17       0.87      0.43      0.57        47
+    34.39.19       0.84      0.79      0.81        71
+    34.39.21       0.67      0.27      0.38        15
+    34.39.23       0.78      0.54      0.64        13
+    34.39.27       0.73      0.39      0.51        41
+    34.39.29       0.64      0.91      0.75       201
+    34.39.31       0.69      0.41      0.51        27
+    34.39.33       0.68      0.73      0.70        66
+    34.39.35       0.81      0.56      0.66        45
+    34.39.37       0.74      0.82      0.78       114
+    34.39.39       0.83      0.66      0.74        98
+    34.39.41       0.62      0.39      0.48        38
+    34.39.43       1.00      0.25      0.40         8
+    34.39.45       0.75      0.92      0.83        13
+    34.39.47       0.71      0.53      0.61        19
+    34.39.51       0.49      0.69      0.57        51
+    34.39.53       0.62      0.44      0.52        18
+    34.39.55       0.62      0.36      0.45        14
+    34.39.57       0.95      0.94      0.94        81
+
+    accuracy                           0.70      1189
+   macro avg       0.69      0.55      0.59      1189
+weighted avg       0.71      0.70      0.68      1189
+
+
+Process finished with exit code 0
+_______________________________________________________________________________________
+5941 101 2480 338 1392 772 485 514 2497 245 148 454 3151 812 540
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.622, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.499, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.789, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.564, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.484, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.521, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.491, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.630, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.708, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.555, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.250, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.489, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.927, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.511, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: RandomForestClassifier, Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.952, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.607, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.435, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.747, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.518, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.495, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.548, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.482, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.622, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.704, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.572, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.326, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.460, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.927, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.519, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: RandomForestClassifier, Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.952, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.698, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.544, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.876, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.667, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.588, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.657, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.605, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.714, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.770, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.640, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.458, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.558, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.931, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.619, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.962, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.657, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.510, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.852, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.609, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.577, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.624, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.584, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.699, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.751, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.661, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.488, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.517, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.931, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.604, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.991, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.642, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.334, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.770, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.513, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.385, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.457, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.211, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.528, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.669, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.495, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.107, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.256, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.890, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.368, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LogisticRegression, Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.868, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.676, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.509, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.853, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.633, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.598, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.618, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.574, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.675, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.744, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.606, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.482, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.519, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.927, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.568, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LogisticRegression, Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.991, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.634, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.500, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.819, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.614, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.524, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.546, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.579, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.619, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.757, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.636, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.200, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.591, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.923, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.607, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: GradientBoostingClassifier, Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.943, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.674, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.622, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.834, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.574, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.531, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.578, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.569, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.631, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.754, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.607, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.239, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.541, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.918, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.636, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: GradientBoostingClassifier, Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.962, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.668, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.425, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.798, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.567, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.521, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.558, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.489, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.680, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.733, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.476, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.352, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.486, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.927, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.548, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: ExtraTreesClassifier, Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.952, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.599, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.468, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.756, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.550, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.513, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.581, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.495, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.615, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.722, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.575, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.358, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.472, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.924, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.540, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: ExtraTreesClassifier, Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.981, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.568, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.536, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.755, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.524, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.526, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.568, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.499, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.559, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.675, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.625, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.283, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.456, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.904, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.522, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: KNeighborsClassifier, Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 1.000, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.157, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.070, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.503, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.081, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.288, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.352, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.320, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.414, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.580, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.237, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.279, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.242, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.886, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.396, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: KNeighborsClassifier, Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.563, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.492, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.431, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.764, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.516, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.484, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.487, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.549, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.674, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.704, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.599, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.352, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.575, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.905, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.559, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: DecisionTreeClassifier, Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.943, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 1, F1 Score: 0.519, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 2, F1 Score: 0.522, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 3, F1 Score: 0.757, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 4, F1 Score: 0.497, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 5, F1 Score: 0.458, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 6, F1 Score: 0.512, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 7, F1 Score: 0.512, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 8, F1 Score: 0.563, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 9, F1 Score: 0.716, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 10, F1 Score: 0.531, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 11, F1 Score: 0.269, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 12, F1 Score: 0.522, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 13, F1 Score: 0.919, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 14, F1 Score: 0.595, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: DecisionTreeClassifier, Векторизатор: CountVectorizer, Датасет: 15, F1 Score: 0.991, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+|||||||||||||||||||||||||||||||||||||
+_______________________________________
+Лучшая модель в общем: LinearSVC(), Лучший векторизатор: TfidfVectorizer, F1: средняя 0.6857733034816377
+Лучшая модель для больших датасетов: LinearSVC(), Лучший векторизатор: TfidfVectorizer, F1: средняя 0.7724976009281539
+Лучшая модель для маленьких датасетов: LinearSVC(), Лучший векторизатор: TfidfVectorizer, F1: средняя 0.6424111547583797
+
+
+
+
+
+
+
+
+
+
+
+
+"______________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/bin/python /Users/denismazepa/Desktop/Py_projects/VKR/src/testing_levels/level_3/testing_catboost_etc.py
+5941 101 2480 338 1392 772 485 514 2497 245 148 454 3151 812 540
+Модель: RandomForestClassifier, Датасет: 1, Векторизатор: Word2Vec_CBOW, F1 Score: 0.328, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: RandomForestClassifier, Датасет: 2, Векторизатор: Word2Vec_CBOW, F1 Score: 0.465, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: RandomForestClassifier, Датасет: 3, Векторизатор: Word2Vec_CBOW, F1 Score: 0.655, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: RandomForestClassifier, Датасет: 4, Векторизатор: Word2Vec_CBOW, F1 Score: 0.509, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: RandomForestClassifier, Датасет: 5, Векторизатор: Word2Vec_CBOW, F1 Score: 0.369, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: RandomForestClassifier, Датасет: 6, Векторизатор: Word2Vec_CBOW, F1 Score: 0.404, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: RandomForestClassifier, Датасет: 7, Векторизатор: Word2Vec_CBOW, F1 Score: 0.375, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: RandomForestClassifier, Датасет: 8, Векторизатор: Word2Vec_CBOW, F1 Score: 0.467, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: RandomForestClassifier, Датасет: 9, Векторизатор: Word2Vec_CBOW, F1 Score: 0.679, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: RandomForestClassifier, Датасет: 10, Векторизатор: Word2Vec_CBOW, F1 Score: 0.440, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: RandomForestClassifier, Датасет: 11, Векторизатор: Word2Vec_CBOW, F1 Score: 0.192, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: RandomForestClassifier, Датасет: 12, Векторизатор: Word2Vec_CBOW, F1 Score: 0.422, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: RandomForestClassifier, Датасет: 13, Векторизатор: Word2Vec_CBOW, F1 Score: 0.924, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: RandomForestClassifier, Датасет: 14, Векторизатор: Word2Vec_CBOW, F1 Score: 0.478, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: RandomForestClassifier, Датасет: 15, Векторизатор: Word2Vec_CBOW, F1 Score: 0.778, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: RandomForestClassifier, Датасет: 1, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.530, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: RandomForestClassifier, Датасет: 2, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.399, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: RandomForestClassifier, Датасет: 3, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.752, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: RandomForestClassifier, Датасет: 4, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.516, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: RandomForestClassifier, Датасет: 5, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.538, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: RandomForestClassifier, Датасет: 6, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.548, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: RandomForestClassifier, Датасет: 7, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.514, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: RandomForestClassifier, Датасет: 8, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.612, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: RandomForestClassifier, Датасет: 9, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.755, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: RandomForestClassifier, Датасет: 10, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.581, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: RandomForestClassifier, Датасет: 11, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.196, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: RandomForestClassifier, Датасет: 12, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.453, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: RandomForestClassifier, Датасет: 13, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.929, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: RandomForestClassifier, Датасет: 14, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.481, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: RandomForestClassifier, Датасет: 15, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.926, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: RandomForestClassifier, Датасет: 1, Векторизатор: FastText_CBOW, F1 Score: 0.306, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: RandomForestClassifier, Датасет: 2, Векторизатор: FastText_CBOW, F1 Score: 0.323, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: RandomForestClassifier, Датасет: 3, Векторизатор: FastText_CBOW, F1 Score: 0.621, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: RandomForestClassifier, Датасет: 4, Векторизатор: FastText_CBOW, F1 Score: 0.296, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: RandomForestClassifier, Датасет: 5, Векторизатор: FastText_CBOW, F1 Score: 0.355, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: RandomForestClassifier, Датасет: 6, Векторизатор: FastText_CBOW, F1 Score: 0.445, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: RandomForestClassifier, Датасет: 7, Векторизатор: FastText_CBOW, F1 Score: 0.360, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: RandomForestClassifier, Датасет: 8, Векторизатор: FastText_CBOW, F1 Score: 0.310, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: RandomForestClassifier, Датасет: 9, Векторизатор: FastText_CBOW, F1 Score: 0.676, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: RandomForestClassifier, Датасет: 10, Векторизатор: FastText_CBOW, F1 Score: 0.414, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: RandomForestClassifier, Датасет: 11, Векторизатор: FastText_CBOW, F1 Score: 0.107, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: RandomForestClassifier, Датасет: 12, Векторизатор: FastText_CBOW, F1 Score: 0.270, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: RandomForestClassifier, Датасет: 13, Векторизатор: FastText_CBOW, F1 Score: 0.928, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: RandomForestClassifier, Датасет: 14, Векторизатор: FastText_CBOW, F1 Score: 0.445, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: RandomForestClassifier, Датасет: 15, Векторизатор: FastText_CBOW, F1 Score: 0.693, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: RandomForestClassifier, Датасет: 1, Векторизатор: FastText_SkipGram, F1 Score: 0.490, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: RandomForestClassifier, Датасет: 2, Векторизатор: FastText_SkipGram, F1 Score: 0.276, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: RandomForestClassifier, Датасет: 3, Векторизатор: FastText_SkipGram, F1 Score: 0.739, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: RandomForestClassifier, Датасет: 4, Векторизатор: FastText_SkipGram, F1 Score: 0.411, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: RandomForestClassifier, Датасет: 5, Векторизатор: FastText_SkipGram, F1 Score: 0.527, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: RandomForestClassifier, Датасет: 6, Векторизатор: FastText_SkipGram, F1 Score: 0.485, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: RandomForestClassifier, Датасет: 7, Векторизатор: FastText_SkipGram, F1 Score: 0.372, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: RandomForestClassifier, Датасет: 8, Векторизатор: FastText_SkipGram, F1 Score: 0.435, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: RandomForestClassifier, Датасет: 9, Векторизатор: FastText_SkipGram, F1 Score: 0.754, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: RandomForestClassifier, Датасет: 10, Векторизатор: FastText_SkipGram, F1 Score: 0.426, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: RandomForestClassifier, Датасет: 11, Векторизатор: FastText_SkipGram, F1 Score: 0.174, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: RandomForestClassifier, Датасет: 12, Векторизатор: FastText_SkipGram, F1 Score: 0.307, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: RandomForestClassifier, Датасет: 13, Векторизатор: FastText_SkipGram, F1 Score: 0.933, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: RandomForestClassifier, Датасет: 14, Векторизатор: FastText_SkipGram, F1 Score: 0.472, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: RandomForestClassifier, Датасет: 15, Векторизатор: FastText_SkipGram, F1 Score: 0.915, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+|||||||||||||||||||||||||||||||||||||||
+Модель: LinearSVC(), Датасет: 1, Векторизатор: Word2Vec_CBOW, F1 Score: 0.346, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Датасет: 2, Векторизатор: Word2Vec_CBOW, F1 Score: 0.017, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LinearSVC(), Датасет: 3, Векторизатор: Word2Vec_CBOW, F1 Score: 0.358, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Датасет: 4, Векторизатор: Word2Vec_CBOW, F1 Score: 0.184, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Датасет: 5, Векторизатор: Word2Vec_CBOW, F1 Score: 0.230, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LinearSVC(), Датасет: 6, Векторизатор: Word2Vec_CBOW, F1 Score: 0.146, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Датасет: 7, Векторизатор: Word2Vec_CBOW, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LinearSVC(), Датасет: 8, Векторизатор: Word2Vec_CBOW, F1 Score: 0.160, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LinearSVC(), Датасет: 9, Векторизатор: Word2Vec_CBOW, F1 Score: 0.617, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LinearSVC(), Датасет: 10, Векторизатор: Word2Vec_CBOW, F1 Score: 0.278, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LinearSVC(), Датасет: 11, Векторизатор: Word2Vec_CBOW, F1 Score: 0.048, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LinearSVC(), Датасет: 12, Векторизатор: Word2Vec_CBOW, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LinearSVC(), Датасет: 13, Векторизатор: Word2Vec_CBOW, F1 Score: 0.883, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LinearSVC(), Датасет: 14, Векторизатор: Word2Vec_CBOW, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Датасет: 15, Векторизатор: Word2Vec_CBOW, F1 Score: 0.593, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: LinearSVC(), Датасет: 1, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.580, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Датасет: 2, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.159, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LinearSVC(), Датасет: 3, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.687, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Датасет: 4, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.230, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Датасет: 5, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.442, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LinearSVC(), Датасет: 6, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.431, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Датасет: 7, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LinearSVC(), Датасет: 8, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.307, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LinearSVC(), Датасет: 9, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.675, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LinearSVC(), Датасет: 10, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.356, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LinearSVC(), Датасет: 11, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.054, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LinearSVC(), Датасет: 12, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LinearSVC(), Датасет: 13, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.892, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LinearSVC(), Датасет: 14, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Датасет: 15, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.894, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: LinearSVC(), Датасет: 1, Векторизатор: FastText_CBOW, F1 Score: 0.307, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Датасет: 2, Векторизатор: FastText_CBOW, F1 Score: 0.178, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LinearSVC(), Датасет: 3, Векторизатор: FastText_CBOW, F1 Score: 0.426, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Датасет: 4, Векторизатор: FastText_CBOW, F1 Score: 0.230, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Датасет: 5, Векторизатор: FastText_CBOW, F1 Score: 0.307, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LinearSVC(), Датасет: 6, Векторизатор: FastText_CBOW, F1 Score: 0.183, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Датасет: 7, Векторизатор: FastText_CBOW, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LinearSVC(), Датасет: 8, Векторизатор: FastText_CBOW, F1 Score: 0.124, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LinearSVC(), Датасет: 9, Векторизатор: FastText_CBOW, F1 Score: 0.578, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+Модель: LinearSVC(), Датасет: 10, Векторизатор: FastText_CBOW, F1 Score: 0.349, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LinearSVC(), Датасет: 11, Векторизатор: FastText_CBOW, F1 Score: 0.165, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LinearSVC(), Датасет: 12, Векторизатор: FastText_CBOW, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LinearSVC(), Датасет: 13, Векторизатор: FastText_CBOW, F1 Score: 0.883, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LinearSVC(), Датасет: 14, Векторизатор: FastText_CBOW, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Датасет: 15, Векторизатор: FastText_CBOW, F1 Score: 0.593, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: LinearSVC(), Датасет: 1, Векторизатор: FastText_SkipGram, F1 Score: 0.525, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Датасет: 2, Векторизатор: FastText_SkipGram, F1 Score: 0.138, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LinearSVC(), Датасет: 3, Векторизатор: FastText_SkipGram, F1 Score: 0.639, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Датасет: 4, Векторизатор: FastText_SkipGram, F1 Score: 0.285, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Датасет: 5, Векторизатор: FastText_SkipGram, F1 Score: 0.431, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LinearSVC(), Датасет: 6, Векторизатор: FastText_SkipGram, F1 Score: 0.356, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Датасет: 7, Векторизатор: FastText_SkipGram, F1 Score: 0.212, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LinearSVC(), Датасет: 8, Векторизатор: FastText_SkipGram, F1 Score: 0.246, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LinearSVC(), Датасет: 9, Векторизатор: FastText_SkipGram, F1 Score: 0.679, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LinearSVC(), Датасет: 10, Векторизатор: FastText_SkipGram, F1 Score: 0.356, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LinearSVC(), Датасет: 11, Векторизатор: FastText_SkipGram, F1 Score: 0.048, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LinearSVC(), Датасет: 12, Векторизатор: FastText_SkipGram, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LinearSVC(), Датасет: 13, Векторизатор: FastText_SkipGram, F1 Score: 0.887, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LinearSVC(), Датасет: 14, Векторизатор: FastText_SkipGram, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Датасет: 15, Векторизатор: FastText_SkipGram, F1 Score: 0.791, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+|||||||||||||||||||||||||||||||||||||||
+Модель: LogisticRegression, Датасет: 1, Векторизатор: Word2Vec_CBOW, F1 Score: 0.336, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LogisticRegression, Датасет: 2, Векторизатор: Word2Vec_CBOW, F1 Score: 0.017, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LogisticRegression, Датасет: 3, Векторизатор: Word2Vec_CBOW, F1 Score: 0.290, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LogisticRegression, Датасет: 4, Векторизатор: Word2Vec_CBOW, F1 Score: 0.184, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LogisticRegression, Датасет: 5, Векторизатор: Word2Vec_CBOW, F1 Score: 0.237, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LogisticRegression, Датасет: 6, Векторизатор: Word2Vec_CBOW, F1 Score: 0.146, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LogisticRegression, Датасет: 7, Векторизатор: Word2Vec_CBOW, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LogisticRegression, Датасет: 8, Векторизатор: Word2Vec_CBOW, F1 Score: 0.148, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LogisticRegression, Датасет: 9, Векторизатор: Word2Vec_CBOW, F1 Score: 0.599, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LogisticRegression, Датасет: 10, Векторизатор: Word2Vec_CBOW, F1 Score: 0.278, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LogisticRegression, Датасет: 11, Векторизатор: Word2Vec_CBOW, F1 Score: 0.048, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LogisticRegression, Датасет: 12, Векторизатор: Word2Vec_CBOW, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LogisticRegression, Датасет: 13, Векторизатор: Word2Vec_CBOW, F1 Score: 0.883, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LogisticRegression, Датасет: 14, Векторизатор: Word2Vec_CBOW, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LogisticRegression, Датасет: 15, Векторизатор: Word2Vec_CBOW, F1 Score: 0.593, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: LogisticRegression, Датасет: 1, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.552, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LogisticRegression, Датасет: 2, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.017, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LogisticRegression, Датасет: 3, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.635, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LogisticRegression, Датасет: 4, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.238, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LogisticRegression, Датасет: 5, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.435, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LogisticRegression, Датасет: 6, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.363, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LogisticRegression, Датасет: 7, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LogisticRegression, Датасет: 8, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.218, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LogisticRegression, Датасет: 9, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.666, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LogisticRegression, Датасет: 10, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.373, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LogisticRegression, Датасет: 11, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.048, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LogisticRegression, Датасет: 12, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LogisticRegression, Датасет: 13, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.886, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LogisticRegression, Датасет: 14, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LogisticRegression, Датасет: 15, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.690, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: LogisticRegression, Датасет: 1, Векторизатор: FastText_CBOW, F1 Score: 0.289, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LogisticRegression, Датасет: 2, Векторизатор: FastText_CBOW, F1 Score: 0.204, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LogisticRegression, Датасет: 3, Векторизатор: FastText_CBOW, F1 Score: 0.441, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LogisticRegression, Датасет: 4, Векторизатор: FastText_CBOW, F1 Score: 0.303, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LogisticRegression, Датасет: 5, Векторизатор: FastText_CBOW, F1 Score: 0.308, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LogisticRegression, Датасет: 6, Векторизатор: FastText_CBOW, F1 Score: 0.183, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LogisticRegression, Датасет: 7, Векторизатор: FastText_CBOW, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LogisticRegression, Датасет: 8, Векторизатор: FastText_CBOW, F1 Score: 0.114, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LogisticRegression, Датасет: 9, Векторизатор: FastText_CBOW, F1 Score: 0.562, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LogisticRegression, Датасет: 10, Векторизатор: FastText_CBOW, F1 Score: 0.334, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LogisticRegression, Датасет: 11, Векторизатор: FastText_CBOW, F1 Score: 0.165, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LogisticRegression, Датасет: 12, Векторизатор: FastText_CBOW, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LogisticRegression, Датасет: 13, Векторизатор: FastText_CBOW, F1 Score: 0.883, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LogisticRegression, Датасет: 14, Векторизатор: FastText_CBOW, F1 Score: 0.287, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LogisticRegression, Датасет: 15, Векторизатор: FastText_CBOW, F1 Score: 0.593, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: LogisticRegression, Датасет: 1, Векторизатор: FastText_SkipGram, F1 Score: 0.523, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LogisticRegression, Датасет: 2, Векторизатор: FastText_SkipGram, F1 Score: 0.088, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LogisticRegression, Датасет: 3, Векторизатор: FastText_SkipGram, F1 Score: 0.617, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LogisticRegression, Датасет: 4, Векторизатор: FastText_SkipGram, F1 Score: 0.291, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LogisticRegression, Датасет: 5, Векторизатор: FastText_SkipGram, F1 Score: 0.414, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LogisticRegression, Датасет: 6, Векторизатор: FastText_SkipGram, F1 Score: 0.376, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LogisticRegression, Датасет: 7, Векторизатор: FastText_SkipGram, F1 Score: 0.191, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LogisticRegression, Датасет: 8, Векторизатор: FastText_SkipGram, F1 Score: 0.176, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LogisticRegression, Датасет: 9, Векторизатор: FastText_SkipGram, F1 Score: 0.680, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LogisticRegression, Датасет: 10, Векторизатор: FastText_SkipGram, F1 Score: 0.356, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LogisticRegression, Датасет: 11, Векторизатор: FastText_SkipGram, F1 Score: 0.048, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LogisticRegression, Датасет: 12, Векторизатор: FastText_SkipGram, F1 Score: 0.193, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: LogisticRegression, Датасет: 13, Векторизатор: FastText_SkipGram, F1 Score: 0.886, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LogisticRegression, Датасет: 14, Векторизатор: FastText_SkipGram, F1 Score: 0.290, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LogisticRegression, Датасет: 15, Векторизатор: FastText_SkipGram, F1 Score: 0.593, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+|||||||||||||||||||||||||||||||||||||||
+Модель: GradientBoostingClassifier, Датасет: 1, Векторизатор: Word2Vec_CBOW, F1 Score: 0.338, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: GradientBoostingClassifier, Датасет: 2, Векторизатор: Word2Vec_CBOW, F1 Score: 0.466, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: GradientBoostingClassifier, Датасет: 3, Векторизатор: Word2Vec_CBOW, F1 Score: 0.672, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: GradientBoostingClassifier, Датасет: 4, Векторизатор: Word2Vec_CBOW, F1 Score: 0.503, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: GradientBoostingClassifier, Датасет: 5, Векторизатор: Word2Vec_CBOW, F1 Score: 0.384, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: GradientBoostingClassifier, Датасет: 6, Векторизатор: Word2Vec_CBOW, F1 Score: 0.455, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: GradientBoostingClassifier, Датасет: 7, Векторизатор: Word2Vec_CBOW, F1 Score: 0.384, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: GradientBoostingClassifier, Датасет: 8, Векторизатор: Word2Vec_CBOW, F1 Score: 0.480, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: GradientBoostingClassifier, Датасет: 9, Векторизатор: Word2Vec_CBOW, F1 Score: 0.695, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: GradientBoostingClassifier, Датасет: 10, Векторизатор: Word2Vec_CBOW, F1 Score: 0.409, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: GradientBoostingClassifier, Датасет: 11, Векторизатор: Word2Vec_CBOW, F1 Score: 0.106, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: GradientBoostingClassifier, Датасет: 12, Векторизатор: Word2Vec_CBOW, F1 Score: 0.446, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: GradientBoostingClassifier, Датасет: 13, Векторизатор: Word2Vec_CBOW, F1 Score: 0.924, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: GradientBoostingClassifier, Датасет: 14, Векторизатор: Word2Vec_CBOW, F1 Score: 0.454, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: GradientBoostingClassifier, Датасет: 15, Векторизатор: Word2Vec_CBOW, F1 Score: 0.857, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: GradientBoostingClassifier, Датасет: 1, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.538, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: GradientBoostingClassifier, Датасет: 2, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.241, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: GradientBoostingClassifier, Датасет: 3, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.775, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: GradientBoostingClassifier, Датасет: 4, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.508, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: GradientBoostingClassifier, Датасет: 5, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.513, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: GradientBoostingClassifier, Датасет: 6, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.502, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: GradientBoostingClassifier, Датасет: 7, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.521, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: GradientBoostingClassifier, Датасет: 8, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.556, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: GradientBoostingClassifier, Датасет: 9, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.753, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: GradientBoostingClassifier, Датасет: 10, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.595, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: GradientBoostingClassifier, Датасет: 11, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.048, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: GradientBoostingClassifier, Датасет: 12, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.373, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: GradientBoostingClassifier, Датасет: 13, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.929, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: GradientBoostingClassifier, Датасет: 14, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.465, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: GradientBoostingClassifier, Датасет: 15, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.935, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: GradientBoostingClassifier, Датасет: 1, Векторизатор: FastText_CBOW, F1 Score: 0.306, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: GradientBoostingClassifier, Датасет: 2, Векторизатор: FastText_CBOW, F1 Score: 0.233, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: GradientBoostingClassifier, Датасет: 3, Векторизатор: FastText_CBOW, F1 Score: 0.615, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: GradientBoostingClassifier, Датасет: 4, Векторизатор: FastText_CBOW, F1 Score: 0.322, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: GradientBoostingClassifier, Датасет: 5, Векторизатор: FastText_CBOW, F1 Score: 0.363, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: GradientBoostingClassifier, Датасет: 6, Векторизатор: FastText_CBOW, F1 Score: 0.401, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: GradientBoostingClassifier, Датасет: 7, Векторизатор: FastText_CBOW, F1 Score: 0.391, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: GradientBoostingClassifier, Датасет: 8, Векторизатор: FastText_CBOW, F1 Score: 0.357, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: GradientBoostingClassifier, Датасет: 9, Векторизатор: FastText_CBOW, F1 Score: 0.673, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: GradientBoostingClassifier, Датасет: 10, Векторизатор: FastText_CBOW, F1 Score: 0.462, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: GradientBoostingClassifier, Датасет: 11, Векторизатор: FastText_CBOW, F1 Score: 0.000, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: GradientBoostingClassifier, Датасет: 12, Векторизатор: FastText_CBOW, F1 Score: 0.261, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: GradientBoostingClassifier, Датасет: 13, Векторизатор: FastText_CBOW, F1 Score: 0.924, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: GradientBoostingClassifier, Датасет: 14, Векторизатор: FastText_CBOW, F1 Score: 0.465, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: GradientBoostingClassifier, Датасет: 15, Векторизатор: FastText_CBOW, F1 Score: 0.752, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: GradientBoostingClassifier, Датасет: 1, Векторизатор: FastText_SkipGram, F1 Score: 0.514, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: GradientBoostingClassifier, Датасет: 2, Векторизатор: FastText_SkipGram, F1 Score: 0.238, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: GradientBoostingClassifier, Датасет: 3, Векторизатор: FastText_SkipGram, F1 Score: 0.739, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: GradientBoostingClassifier, Датасет: 4, Векторизатор: FastText_SkipGram, F1 Score: 0.427, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: GradientBoostingClassifier, Датасет: 5, Векторизатор: FastText_SkipGram, F1 Score: 0.506, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: GradientBoostingClassifier, Датасет: 6, Векторизатор: FastText_SkipGram, F1 Score: 0.454, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: GradientBoostingClassifier, Датасет: 7, Векторизатор: FastText_SkipGram, F1 Score: 0.429, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: GradientBoostingClassifier, Датасет: 8, Векторизатор: FastText_SkipGram, F1 Score: 0.462, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: GradientBoostingClassifier, Датасет: 9, Векторизатор: FastText_SkipGram, F1 Score: 0.731, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: GradientBoostingClassifier, Датасет: 10, Векторизатор: FastText_SkipGram, F1 Score: 0.467, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: GradientBoostingClassifier, Датасет: 11, Векторизатор: FastText_SkipGram, F1 Score: 0.286, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: GradientBoostingClassifier, Датасет: 12, Векторизатор: FastText_SkipGram, F1 Score: 0.353, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: GradientBoostingClassifier, Датасет: 13, Векторизатор: FastText_SkipGram, F1 Score: 0.922, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: GradientBoostingClassifier, Датасет: 14, Векторизатор: FastText_SkipGram, F1 Score: 0.467, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: GradientBoostingClassifier, Датасет: 15, Векторизатор: FastText_SkipGram, F1 Score: 0.897, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+|||||||||||||||||||||||||||||||||||||||
+Модель: ExtraTreesClassifier, Датасет: 1, Векторизатор: Word2Vec_CBOW, F1 Score: 0.311, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: ExtraTreesClassifier, Датасет: 2, Векторизатор: Word2Vec_CBOW, F1 Score: 0.532, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: ExtraTreesClassifier, Датасет: 3, Векторизатор: Word2Vec_CBOW, F1 Score: 0.655, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: ExtraTreesClassifier, Датасет: 4, Векторизатор: Word2Vec_CBOW, F1 Score: 0.465, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: ExtraTreesClassifier, Датасет: 5, Векторизатор: Word2Vec_CBOW, F1 Score: 0.355, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: ExtraTreesClassifier, Датасет: 6, Векторизатор: Word2Vec_CBOW, F1 Score: 0.392, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: ExtraTreesClassifier, Датасет: 7, Векторизатор: Word2Vec_CBOW, F1 Score: 0.403, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: ExtraTreesClassifier, Датасет: 8, Векторизатор: Word2Vec_CBOW, F1 Score: 0.449, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: ExtraTreesClassifier, Датасет: 9, Векторизатор: Word2Vec_CBOW, F1 Score: 0.682, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: ExtraTreesClassifier, Датасет: 10, Векторизатор: Word2Vec_CBOW, F1 Score: 0.455, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: ExtraTreesClassifier, Датасет: 11, Векторизатор: Word2Vec_CBOW, F1 Score: 0.252, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: ExtraTreesClassifier, Датасет: 12, Векторизатор: Word2Vec_CBOW, F1 Score: 0.420, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: ExtraTreesClassifier, Датасет: 13, Векторизатор: Word2Vec_CBOW, F1 Score: 0.928, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: ExtraTreesClassifier, Датасет: 14, Векторизатор: Word2Vec_CBOW, F1 Score: 0.468, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: ExtraTreesClassifier, Датасет: 15, Векторизатор: Word2Vec_CBOW, F1 Score: 0.800, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: ExtraTreesClassifier, Датасет: 1, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.522, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: ExtraTreesClassifier, Датасет: 2, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.392, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: ExtraTreesClassifier, Датасет: 3, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.757, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: ExtraTreesClassifier, Датасет: 4, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.490, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: ExtraTreesClassifier, Датасет: 5, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.512, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: ExtraTreesClassifier, Датасет: 6, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.523, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: ExtraTreesClassifier, Датасет: 7, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.527, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: ExtraTreesClassifier, Датасет: 8, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.605, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: ExtraTreesClassifier, Датасет: 9, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.745, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: ExtraTreesClassifier, Датасет: 10, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.555, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: ExtraTreesClassifier, Датасет: 11, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.192, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: ExtraTreesClassifier, Датасет: 12, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.438, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: ExtraTreesClassifier, Датасет: 13, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.929, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: ExtraTreesClassifier, Датасет: 14, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.460, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: ExtraTreesClassifier, Датасет: 15, Векторизатор: Word2Vec_SkipGramm, F1 Score: 0.926, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: ExtraTreesClassifier, Датасет: 1, Векторизатор: FastText_CBOW, F1 Score: 0.289, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: ExtraTreesClassifier, Датасет: 2, Векторизатор: FastText_CBOW, F1 Score: 0.251, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: ExtraTreesClassifier, Датасет: 3, Векторизатор: FastText_CBOW, F1 Score: 0.603, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: ExtraTreesClassifier, Датасет: 4, Векторизатор: FastText_CBOW, F1 Score: 0.237, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: ExtraTreesClassifier, Датасет: 5, Векторизатор: FastText_CBOW, F1 Score: 0.337, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: ExtraTreesClassifier, Датасет: 6, Векторизатор: FastText_CBOW, F1 Score: 0.460, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: ExtraTreesClassifier, Датасет: 7, Векторизатор: FastText_CBOW, F1 Score: 0.343, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: ExtraTreesClassifier, Датасет: 8, Векторизатор: FastText_CBOW, F1 Score: 0.310, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: ExtraTreesClassifier, Датасет: 9, Векторизатор: FastText_CBOW, F1 Score: 0.662, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: ExtraTreesClassifier, Датасет: 10, Векторизатор: FastText_CBOW, F1 Score: 0.433, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: ExtraTreesClassifier, Датасет: 11, Векторизатор: FastText_CBOW, F1 Score: 0.080, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: ExtraTreesClassifier, Датасет: 12, Векторизатор: FastText_CBOW, F1 Score: 0.252, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: ExtraTreesClassifier, Датасет: 13, Векторизатор: FastText_CBOW, F1 Score: 0.927, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: ExtraTreesClassifier, Датасет: 14, Векторизатор: FastText_CBOW, F1 Score: 0.443, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: ExtraTreesClassifier, Датасет: 15, Векторизатор: FastText_CBOW, F1 Score: 0.755, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+Модель: ExtraTreesClassifier, Датасет: 1, Векторизатор: FastText_SkipGram, F1 Score: 0.482, Длина датасета: 5941,Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: ExtraTreesClassifier, Датасет: 2, Векторизатор: FastText_SkipGram, F1 Score: 0.341, Длина датасета: 101,Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: ExtraTreesClassifier, Датасет: 3, Векторизатор: FastText_SkipGram, F1 Score: 0.738, Длина датасета: 2480,Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: ExtraTreesClassifier, Датасет: 4, Векторизатор: FastText_SkipGram, F1 Score: 0.351, Длина датасета: 338,Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: ExtraTreesClassifier, Датасет: 5, Векторизатор: FastText_SkipGram, F1 Score: 0.546, Длина датасета: 1392,Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: ExtraTreesClassifier, Датасет: 6, Векторизатор: FastText_SkipGram, F1 Score: 0.471, Длина датасета: 772,Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: ExtraTreesClassifier, Датасет: 7, Векторизатор: FastText_SkipGram, F1 Score: 0.408, Длина датасета: 485,Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: ExtraTreesClassifier, Датасет: 8, Векторизатор: FastText_SkipGram, F1 Score: 0.428, Длина датасета: 514,Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: ExtraTreesClassifier, Датасет: 9, Векторизатор: FastText_SkipGram, F1 Score: 0.745, Длина датасета: 2497,Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: ExtraTreesClassifier, Датасет: 10, Векторизатор: FastText_SkipGram, F1 Score: 0.471, Длина датасета: 245,Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: ExtraTreesClassifier, Датасет: 11, Векторизатор: FastText_SkipGram, F1 Score: 0.117, Длина датасета: 148,Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: ExtraTreesClassifier, Датасет: 12, Векторизатор: FastText_SkipGram, F1 Score: 0.299, Длина датасета: 454,Количество классов в датасете:  11, Тема: Океанология
+Модель: ExtraTreesClassifier, Датасет: 13, Векторизатор: FastText_SkipGram, F1 Score: 0.931, Длина датасета: 3151,Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: ExtraTreesClassifier, Датасет: 14, Векторизатор: FastText_SkipGram, F1 Score: 0.455, Длина датасета: 812,Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: ExtraTreesClassifier, Датасет: 15, Векторизатор: FastText_SkipGram, F1 Score: 0.924, Длина датасета: 540,Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+_______________________________________
+|||||||||||||||||||||||||||||||||||||||
+Лучшая модель в общем: RandomForestClassifier, Лучший векторизатор: Word2Vec_SkipGramm, F1: средняя 0.5818459414939615
+Лучшая модель для больших датасетов: GradientBoostingClassifier, Лучший векторизатор: Word2Vec_SkipGramm, F1: средняя 0.7014574986332691
+Лучшая модель для маленьких датасетов: RandomForestClassifier, Лучший векторизатор: Word2Vec_SkipGramm, F1: средняя 0.5224020645267703
+
+Process finished with exit code 0

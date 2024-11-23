@@ -4,16 +4,20 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import f1_score
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import f1_score, make_scorer
+# from sklearn.naive_bayes import MultinomialNB
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.ensemble import AdaBoostClassifier
+# from sklearn.ensemble import AdaBoostClassifier
 # from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from gensim.models import Word2Vec, FastText
 import numpy as np
+from sklearn.pipeline import Pipeline
+import joblib
+from random import randint
+from sklearn.model_selection import GridSearchCV
 
 # Загрузите ваш датасет
 df = pd.read_csv(
@@ -89,6 +93,7 @@ dict_of_frames = {"1": [df_1, "Физиология человека и живо
                          "Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов"],
                   "14": [df_14, "Материалы для электроники и радиотехники"],
                   "15": [df_15, "Сельскохозяйственная биология"]}
+
 dict_of_models = {"RandomForestClassifier": RandomForestClassifier(),
                   "LinearSVC()": LinearSVC(),
                   "LogisticRegression": LogisticRegression(max_iter=2000),
@@ -220,7 +225,7 @@ def boosted_vectorizers() -> None:
     print(best_variant_small)
 
 
-def gridsearch() -> None:
+def gridsearch_word2vec() -> None:
     average_f1, small_f1, big_f1 = 0, 0, 0
     best_variant_all, best_variant_small, best_variant_big = "", "", ""
     for k in dict_of_models_boosted.keys():
@@ -254,9 +259,10 @@ def gridsearch() -> None:
                         else:
                             sum_f1_small += f1
                         print(
-                            f'Модель: {k}, Датасет: {i}, Векторизатор: Word2Vec SG, F1 Score: {f1:.3f}, negative: {neg} window: {wind},'
-                            f' vectorsize: {vect}, Длина датасета: {len(dict_of_frames[i][0])},'
-                            f'Количество классов в датасете:  {len(dict_of_frames[i][0]['RGNTI3'].unique().tolist())}, Тема: {dict_of_frames[i][1]}')
+                            f'Модель: {k}, Датасет: {i}, Векторизатор: Word2VecSG, F1 Score: {f1:.3f}, negative: {neg},'
+                            f' window: {wind}, vectorsize: {vect}, Длина датасета: {len(dict_of_frames[i][0])},'
+                            f'Количество классов в датасете:  {len(dict_of_frames[i][0]['RGNTI3'].unique().tolist())},'
+                            f' Тема: {dict_of_frames[i][1]}')
                     if sum_f1 > average_f1:
                         average_f1 = sum_f1
                         best_variant_all = (f"Лучшие параметры для всех датасетов: negative: {neg} window: {wind},"
@@ -276,6 +282,58 @@ def gridsearch() -> None:
     print(best_variant_small)
 
 
+def save_search():
+    for i in [df_13, df_7]:
+        X_train, X_test, y_train, y_test = train_test_split(i['body'], i['RGNTI3'], test_size=0.2, random_state=42)
+        pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer()),
+            ('svc', LinearSVC())
+        ])
+        pipeline.fit(X_train, y_train)
+        print(f'Accuracy: {pipeline.score(X_test, y_test) * 100:.2f}%')
+        joblib.dump(pipeline, f'text_classification_{randint(1, 5)}.joblib')
+
+
+grid_search_list = [df_1, df_7, df_14]
+
+
+def grid_search_scv():
+    for i in range(0, 3):
+        pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer()),
+            ('svc', LinearSVC())
+        ])
+
+        parameters = {'tfidf__max_df': [0.75, 1.0],
+                      'tfidf__ngram_range': [(1, 1), (1, 2)],
+                      'tfidf__use_idf': [True, False],
+                      'svc__C': [0.1, 1, 10],
+                      'svc__penalty': ['l2'],  # Тип регуляризации (l1 не поддерживается без dual=False)
+                      'svc__loss': ['squared_hinge', 'hinge'],  # Функция потерь
+                      'svc__dual': [True, False],  # Использовать двойственную задачу?
+                      'svc__fit_intercept': [True, False],  # Добавлять ли смещение?
+                      'svc__class_weight': [None, 'balanced'],  # Веса классов
+                      'svc__max_iter': [2000, 3000],  # Максимальное количество итераций
+                      'svc__tol': [1e-4, 1e-3],
+                      }
+
+        grid_search = GridSearchCV(pipeline, parameters, scoring='f1_macro', cv=5, n_jobs=-1, verbose=1)
+
+        X = grid_search_list[i]['body']
+        y = grid_search_list[i]['RGNTI3']
+        print(X.head(5), y.head(5))
+
+        grid_search.fit(X, y)
+        print(f"Номер датасета: {i}")
+        print("Наилучшие параметры:")
+        print(grid_search.best_params_)
+
+        print("Наилучшее значение метрики f1:")
+        print(grid_search.best_score_)
 # usual_models()
 # boosted_vectorizers()
-gridsearch()
+# gridsearch_word2vec()
+# save_search()
+
+
+grid_search_scv()

@@ -54,8 +54,9 @@ class DataFrameProcessor:
     def pad_single_char_values_reverse(self, column_name):
         """Добавляет '0' перед строками с одним символом в указанном столбце."""
         self.dataframe[column_name] = self.dataframe[column_name].apply(
-            lambda x: x + '0' if isinstance(x, str) and len(x) == 4 else x
-        )
+            lambda x: x + '0' if isinstance(x, str) and len(x) == 4 and str(x)[2] == '.' else x)
+        self.dataframe[column_name] = self.dataframe[column_name].apply(
+            lambda x: '0' + x if isinstance(x, str) and len(x) == 4 and str(x)[1] == '.' else x)
 
 
 def limit_unique_values(df: pandas.DataFrame, column_name: str, n=200) -> pd.DataFrame:

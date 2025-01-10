@@ -71,11 +71,12 @@ class DataAnalyzer:
         print(f'Средняя длина текстов в словах в {dataset_name}: {average_word_count}')
 
     def analis_labels(self, column_1: str, column_2: str) -> None:
-        """Количество уникальных значений в колонке 2 для каждого значения в колонке 1"""
+        """Количество уникальных значений в колонке 2 для каждого значения в колонке 1 в среднем"""
         print(self.df.groupby(column_1)[column_2].nunique().mean())
 
     def analis_len_labels(self, column_1: str, column_2: str) -> None:
-        unique_counts = df.groupby(column_1)[column_2].nunique()
+        """Количество уникальных значений в колонке 2 для каждого значения в колонке 1"""
+        unique_counts = self.df.groupby(column_1)[column_2].nunique()
         print(unique_counts.reset_index(name='unique_count'))
 
     def pict_label_analys(self, col1: str, col2: str):

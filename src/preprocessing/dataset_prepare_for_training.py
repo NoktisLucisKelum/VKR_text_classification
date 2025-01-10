@@ -9,14 +9,11 @@ from rdkit.Chem.Draw import rdMolDraw2D
 import re
 import rdkit
 import difflib
-import warnings
-
-warnings.filterwarnings("ignore")
 
 nltk.download('stopwords')
 
-rdkit.RDLogger.DisableLog('rdApp.*')
-rdkit.RDLogger.EnableLog('rdApp.*')
+from rdkit import rdBase
+blocker = rdBase.BlockLogs()
 
 russian_stopwords = set(stopwords.words('russian'))
 
@@ -130,7 +127,7 @@ class TextPreprocessor:
         for column in columns:
             self.df[column] = self.df[column].apply(
                 lambda x: ' '.join([self.morph.parse(word)[0].normal_form for word in x.split()])
-            )
+                if isinstance(x, str) else x)
 
     def stem(self, columns: list):
         """Стеммизация"""
@@ -192,28 +189,6 @@ class TextPreprocessor:
         """Выводит тип колонки"""
         print(self.df[column].dtype)
 
+    def return_dataset(self):
+        return self.df
 
-df = pd.read_csv("../VKR/datasets/datasets_final/train_refactored_lematize.csv")
-
-print(df.columns)
-# print(df.columns)
-preprocessor = TextPreprocessor(df)
-
-# Последовательно применяем функции
-preprocessor.drop_nan()
-preprocessor.chem_formula_prepare()
-preprocessor.phys_formula_prepare()
-preprocessor.remove_english_strings()
-preprocessor.lemmatize(['title', 'body', 'keywords'])
-preprocessor.remove_punctuation(['title', 'body'])
-# # preprocessor.stem(['text_column'])
-preprocessor.remove_stop_words(['title', 'body'])
-# preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
-preprocessor.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
-preprocessor.drop_columns(["correct"])
-preprocessor.merge_and_drop_columns('body', 'title')
-# preprocessor.printing('body')
-# preprocessor.printing('keywords')
-preprocessor.repare_columns()
-
-preprocessor.save_to_csv("../VKR/datasets/datasets_final/train_refactored_lematize.csv")

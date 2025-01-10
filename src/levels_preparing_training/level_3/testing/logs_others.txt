@@ -1,0 +1,145 @@
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 1, F1 Score: 0.698, Длина датасета: 5941, Количество классов в датасете:  23, Тема: Физиология человека и животных
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 2, F1 Score: 0.544, Длина датасета: 101, Количество классов в датасете:  9, Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 3, F1 Score: 0.876, Длина датасета: 2480, Количество классов в датасете:  10, Тема: Химическое и нефтяное машиностроение
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 4, F1 Score: 0.667, Длина датасета: 338, Количество классов в датасете:  17, Тема: Общие вопросы автоматики и вычислительной техники
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 5, F1 Score: 0.588, Длина датасета: 1392, Количество классов в датасете:  18, Тема: Физика плазмы
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 6, F1 Score: 0.657, Длина датасета: 772, Количество классов в датасете:  12, Тема: Водный транспорт
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 7, F1 Score: 0.605, Длина датасета: 485, Количество классов в датасете:  11, Тема: Гидрогеология
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 8, F1 Score: 0.714, Длина датасета: 514, Количество классов в датасете:  14, Тема: Геомагнетизм и высокие слои атмосферы
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 9, F1 Score: 0.770, Длина датасета: 2497, Количество классов в датасете:  19, Тема: Искусственный интеллект
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 10, F1 Score: 0.640, Длина датасета: 245, Количество классов в датасете:  10, Тема: Технология химических волокон и нитей
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 11, F1 Score: 0.458, Длина датасета: 148, Количество классов в датасете:  10, Тема: Промышленный синтез органических красителей и пигментов
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 12, F1 Score: 0.558, Длина датасета: 454, Количество классов в датасете:  11, Тема: Океанология
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 13, F1 Score: 0.931, Длина датасета: 3151, Количество классов в датасете:  5, Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 14, F1 Score: 0.619, Длина датасета: 812, Количество классов в датасете:  16, Тема: Материалы для электроники и радиотехники
+Модель: LinearSVC(), Векторизатор: TfidfVectorizer, Датасет: 15, F1 Score: 0.962, Длина датасета: 540, Количество классов в датасете:  2, Тема: Сельскохозяйственная биология
+
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/bin/python /Users/denismazepa/Desktop/Py_projects/VKR/src/levels_preparing_training/level_3/testing_catboost_etc.py
+5941 101 2480 338 1392 772 485 514 2497 245 148 454 3151 812 540
+4     синдром jfisblaku_системный_vhsljdka jfisblaku...
+32    идентифицироваться некоторый белка качество по...
+37    jfisblaku_атеросклероз_vhsljdka это артериальн...
+38    хронический рецидивировать jfisblaku_афтозный_...
+39    выдвинуть гипотеза хронический кормление мышь ...
+Name: body, dtype: object 4     34.39.37
+32    34.39.15
+37    34.39.29
+38    34.39.33
+39    34.39.03
+Name: RGNTI3, dtype: object
+Fitting 5 folds for each of 768 candidates, totalling 3840 fits
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/model_selection/_split.py:776: UserWarning: The least populated class in y has only 1 members, which is less than n_splits=5.
+  warnings.warn(
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/svm/_base.py:1235: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/numpy/ma/core.py:2820: RuntimeWarning: invalid value encountered in cast
+  _data = np.array(data, dtype=dtype, copy=copy,
+Номер датасета: 0
+Наилучшие параметры:
+{'svc__C': 1, 'svc__class_weight': 'balanced', 'svc__fit_intercept': True, 'svc__loss': 'squared_hinge', 'svc__max_iter': 2000, 'svc__penalty': 'l2', 'svc__tol': 0.0001, 'tfidf__max_df': 0.75, 'tfidf__ngram_range': (1, 1), 'tfidf__use_idf': True}
+Наилучшее значение метрики f1:
+0.6735170659953587
+28141    провести сравнительный анализ горизонтальный о...
+28146    рассматриваться концентрация шестивалентный хр...
+28346    рассматриваться воздействие деятельность карье...
+28540    выявление источник зона jfisblaku_фильтрация_v...
+28971    район расположить северовосток songnen heilong...
+Name: body, dtype: object 28141    38.61.19
+28146    38.61.17
+28346    38.61.01
+28540    38.61.03
+28971    38.61.01
+Name: RGNTI3, dtype: object
+Fitting 5 folds for each of 768 candidates, totalling 3840 fits
+Номер датасета: 1
+Наилучшие параметры:
+{'svc__C': 1, 'svc__class_weight': 'balanced', 'svc__fit_intercept': False, 'svc__loss': 'hinge', 'svc__max_iter': 2000, 'svc__penalty': 'l2', 'svc__tol': 0.0001, 'tfidf__max_df': 0.75, 'tfidf__ngram_range': (1, 2), 'tfidf__use_idf': False}
+Наилучшее значение метрики f1:
+0.6535611877110233
+28042    исследовалиться jfisblaku_диэлектрический_vhsl...
+28055    исследовалиться характеристика рассеяние индив...
+28159    производство сложный современный печатный плат...
+28180    представить новый метод разработка jfisblaku_ш...
+28213    продемонстрировать снижение коэффициент отраже...
+Name: body, dtype: object 28042    47.09.33
+28055    47.09.29
+28159    47.09.53
+28180    47.09.29
+28213    47.09.29
+Name: RGNTI3, dtype: object
+Fitting 5 folds for each of 768 candidates, totalling 3840 fits
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/model_selection/_split.py:776: UserWarning: The least populated class in y has only 1 members, which is less than n_splits=5.
+  warnings.warn(
+Номер датасета: 2
+Наилучшие параметры:
+{'svc__C': 1, 'svc__class_weight': 'balanced', 'svc__fit_intercept': True, 'svc__loss': 'squared_hinge', 'svc__max_iter': 2000, 'svc__penalty': 'l2', 'svc__tol': 0.0001, 'tfidf__max_df': 0.75, 'tfidf__ngram_range': (1, 1), 'tfidf__use_idf': True}
+Наилучшее значение метрики f1:
+0.5086716289304726
+
+Process finished with exit code 0
+
+"_______________________________________________________________________________________________________________"
+Тестирование 2
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/bin/python /Users/denismazepa/Desktop/Py_projects/VKR/src/levels_preparing_training/level_3/testing_catboost_etc.py
+5941 101 2480 338 1392 772 485 514 2497 245 148 454 3151 812 540
+4     синдром jfisblaku_системный_vhsljdka jfisblaku...
+32    идентифицироваться некоторый белка качество по...
+37    jfisblaku_атеросклероз_vhsljdka это артериальн...
+38    хронический рецидивировать jfisblaku_афтозный_...
+39    выдвинуть гипотеза хронический кормление мышь ...
+Name: body, dtype: object 4     34.39.37
+32    34.39.15
+37    34.39.29
+38    34.39.33
+39    34.39.03
+Name: RGNTI3, dtype: object
+Fitting 5 folds for each of 72 candidates, totalling 360 fits
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/model_selection/_split.py:776: UserWarning: The least populated class in y has only 1 members, which is less than n_splits=5.
+  warnings.warn(
+Номер датасета: 0
+Наилучшие параметры:
+{'svc__C': 0.65, 'svc__class_weight': 'balanced', 'svc__fit_intercept': True, 'svc__loss': 'squared_hinge', 'svc__penalty': 'l2', 'svc__tol': 0.0001, 'tfidf__max_df': 0.5, 'tfidf__ngram_range': (1, 1), 'tfidf__use_idf': True}
+Наилучшее значение метрики f1:
+0.6773765860902229
+28141    провести сравнительный анализ горизонтальный о...
+28146    рассматриваться концентрация шестивалентный хр...
+28346    рассматриваться воздействие деятельность карье...
+28540    выявление источник зона jfisblaku_фильтрация_v...
+28971    район расположить северовосток songnen heilong...
+Name: body, dtype: object 28141    38.61.19
+28146    38.61.17
+28346    38.61.01
+28540    38.61.03
+28971    38.61.01
+Name: RGNTI3, dtype: object
+Fitting 5 folds for each of 72 candidates, totalling 360 fits
+Номер датасета: 1
+Наилучшие параметры:
+{'svc__C': 0.75, 'svc__class_weight': 'balanced', 'svc__fit_intercept': False, 'svc__loss': 'squared_hinge', 'svc__penalty': 'l2', 'svc__tol': 0.0001, 'tfidf__max_df': 0.5, 'tfidf__ngram_range': (1, 1), 'tfidf__use_idf': False}
+Наилучшее значение метрики f1:
+0.6368899449564692
+28042    исследовалиться jfisblaku_диэлектрический_vhsl...
+28055    исследовалиться характеристика рассеяние индив...
+28159    производство сложный современный печатный плат...
+28180    представить новый метод разработка jfisblaku_ш...
+28213    продемонстрировать снижение коэффициент отраже...
+Name: body, dtype: object 28042    47.09.33
+28055    47.09.29
+28159    47.09.53
+28180    47.09.29
+28213    47.09.29
+Name: RGNTI3, dtype: object
+Fitting 5 folds for each of 72 candidates, totalling 360 fits
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/sklearn/model_selection/_split.py:776: UserWarning: The least populated class in y has only 1 members, which is less than n_splits=5.
+  warnings.warn(
+Номер датасета: 2
+Наилучшие параметры:
+{'svc__C': 0.65, 'svc__class_weight': 'balanced', 'svc__fit_intercept': False, 'svc__loss': 'squared_hinge', 'svc__penalty': 'l2', 'svc__tol': 0.0001, 'tfidf__max_df': 0.5, 'tfidf__ngram_range': (1, 1), 'tfidf__use_idf': True}
+Наилучшее значение метрики f1:
+0.5178137680996336
+
+Process finished with exit code 0
+_______________________________________________________________
+Тестирование 3

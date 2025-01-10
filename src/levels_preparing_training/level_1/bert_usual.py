@@ -224,7 +224,6 @@ def predict_text(text):
     return label_encoder.inverse_transform(prediction.cpu().numpy())
 
 
-# Пример использования функции предсказания
 sample_text = "ваш текст здесь"
 predicted_class = predict_text(sample_text)
 print(f'Predicted class: {predicted_class}')

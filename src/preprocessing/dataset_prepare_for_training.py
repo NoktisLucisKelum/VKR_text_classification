@@ -70,6 +70,8 @@ def mark_formula_with_text(text):
 
 def split_words(word_list):
     result = []
+    if not(isinstance(word_list, str)):
+        word_list = str(word_list)
     for word in word_list.split():
         result.extend(word.split('\\'))  # Разделяем слова по символу '\'
     return ' '.join(result)

@@ -11,6 +11,7 @@ from transformers import T5ForConditionalGeneration, T5Tokenizer
 from time import time
 from src.preprocessing.dataset_prepare_for_training import (TextPreprocessor)
 import warnings
+
 warnings.filterwarnings("ignore")
 
 df = pd.read_csv(
@@ -22,8 +23,9 @@ with open("/Users/denismazepa/Desktop/Py_projects/VKR/grnti/GRNTI_2_ru.json", 'r
     data = json.load(f)
 
 print(1)
-df_reserve = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datatsets_from_git/train/train_ru_work.csv",
-                            sep="\t", on_bad_lines='skip')
+df_reserve = pd.read_csv(
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datatsets_from_git/train/train_ru_work.csv",
+    sep="\t", on_bad_lines='skip')
 
 MODEL_NAME = 'cointegrated/rut5-base-paraphraser'
 model = T5ForConditionalGeneration.from_pretrained(MODEL_NAME)
@@ -32,10 +34,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(2)
 
 pipeline_0 = Pipeline([
-            ('tfidf', TfidfVectorizer(max_df=0.5, ngram_range=(1, 1), use_idf=True)),
-            ('svc', LinearSVC(C=0.65, class_weight='balanced', fit_intercept=False, loss='squared_hinge', max_iter=4000,
-                              penalty='l2', tol=0.0001))
-        ])
+    ('tfidf', TfidfVectorizer(max_df=0.5, ngram_range=(1, 1), use_idf=True)),
+    ('svc', LinearSVC(C=0.65, class_weight='balanced', fit_intercept=False, loss='squared_hinge', max_iter=4000,
+                      penalty='l2', tol=0.0001))
+])
 
 
 def augment_dataset_with_t5(dataset: pd.DataFrame, text_column: str, class_column: str, iter: int) -> pd.DataFrame:
@@ -48,8 +50,8 @@ def augment_dataset_with_t5(dataset: pd.DataFrame, text_column: str, class_colum
     :return: Обновленный DataFrame
     """
 
-    dataset_length,   unique_classes, class_counts = (len(dataset), dataset[class_column].nunique(),
-                                                      dataset[class_column].value_counts())
+    dataset_length, unique_classes, class_counts = (len(dataset), dataset[class_column].nunique(),
+                                                    dataset[class_column].value_counts())
 
     # print(f"Длина датасета: {dataset_length}")
     # print(f"Количество уникальных классов: {unique_classes}")
@@ -127,12 +129,7 @@ for i in list_of_unique:
         else:
             sum_real += f1_weighted
             count_real += 1
-
-        sum += f1_weighted
-        count += 1
-        dict_of_success[i] = f1_weighted
-
-        if f1_weighted < 0.73:
+        if f1_weighted < 0.73 or f1_micro == 1.00 or f1_macro == 1.00 or f1_weighted == 1.00:
             count_need_augmentation += 1
             cycle_len = 1
             print("___________________________________________________________")
@@ -145,6 +142,7 @@ for i in list_of_unique:
 
             iter_1 = preprocessor_iter_1.return_dataset()
             iter_2 = augment_dataset_with_t5(iter_1, 'body', 'RGNTI3', cycle_len)
+            iter_2.dropna()
 
             preprocessor_iter_2 = TextPreprocessor(iter_2)
             preprocessor_iter_2.chem_formula_prepare()
@@ -157,6 +155,8 @@ for i in list_of_unique:
             # preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
             preprocessor_iter_2.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
             preprocessor_iter_2.drop_columns(["correct"])
+            # preprocessor_iter_2.printing("keywords")
+            # preprocessor_iter_2.printing("body")
             preprocessor_iter_2.repare_columns()
             iter_3 = preprocessor_iter_2.return_dataset()
             print(f"Длина старого датасета: {len(df_cut)}, Длинна датасета который достали из "
@@ -168,18 +168,28 @@ for i in list_of_unique:
             pipeline_new = pipeline
             pipeline_new.fit(X_train, y_train)
             y_pred = pipeline_new.predict(X_test)
-            f1_new = f1_score(y_test, y_pred, average="weighted")
+            f1_weighted_new = f1_score(y_test, y_pred, average="weighted")
             f1_macro_new = f1_score(y_test, y_pred, average="macro")
             f1_micro_new = f1_score(y_test, y_pred, average="micro")
-            print(f'Обновленный датасет. Название темы: {model_name}, F1_weighted: {f1_new:.2f}%, '
+
+            sum += f1_weighted_new
+            count += 1
+            dict_of_success[i] = f1_weighted_new
+
+            print(f'Обновленный датасет. Название темы: {model_name}, F1_weighted: {f1_weighted_new:.2f}%, '
                   f'F1_macro: {f1_macro_new:.2f}, F1_micro: {f1_micro_new:.2f}, '
                   f'Длина датасета: {len(iter_3)},Уникальных классов: {len(iter_3["RGNTI3"].unique().tolist())}')
-            joblib.dump(pipeline_new, f'/kaggle/working/datasets_level_3/{model_name}.joblib')
+            joblib.dump(pipeline_new,
+                        f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{model_name}.joblib')
             print("___________________________________________________________")
         else:
-            print(f'Название темы: {model_name}, Код темы: {i}, F1_weighted: {f1_weighted :.2f}, F1_macro: {f1_macro:.2f}, '
-              f'F1_micro: {f1_micro:.2f}, Длина датасета: {len(df_cut)}, '
-              f'Уникальных классов: {len(df_cut["RGNTI3"].unique().tolist())}')
+            sum += f1_weighted
+            count += 1
+            dict_of_success[i] = f1_weighted
+            print(
+                f'Название темы: {model_name}, Код темы: {i}, F1_weighted: {f1_weighted:.2f}, F1_macro: {f1_macro:.2f}, '
+                f'F1_micro: {f1_micro:.2f}, Длина датасета: {len(df_cut)}, '
+                f'Уникальных классов: {len(df_cut["RGNTI3"].unique().tolist())}')
         joblib.dump(pipeline, f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{model_name}.joblib')
 
 print(f"Всего: {count}")
@@ -190,4 +200,3 @@ print(f"Пропущено - маленькая выборка: {count_passed_sm
 print(f"Пропущено - один класс: {count_passed_one_label} ")
 print(f"Аномальное f1: {count_high_f1}")
 print(f"Нуждается в аугментации: {count_need_augmentation}")
-

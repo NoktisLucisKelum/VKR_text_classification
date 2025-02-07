@@ -180,7 +180,7 @@ for i in list_of_unique:
                   f'F1_macro: {f1_macro_new:.2f}, F1_micro: {f1_micro_new:.2f}, '
                   f'Длина датасета: {len(iter_3)},Уникальных классов: {len(iter_3["RGNTI3"].unique().tolist())}')
             joblib.dump(pipeline_new,
-                        f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{model_name}.joblib')
+                        f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
             print("___________________________________________________________")
         else:
             sum += f1_weighted
@@ -190,13 +190,14 @@ for i in list_of_unique:
                 f'Название темы: {model_name}, Код темы: {i}, F1_weighted: {f1_weighted:.2f}, F1_macro: {f1_macro:.2f}, '
                 f'F1_micro: {f1_micro:.2f}, Длина датасета: {len(df_cut)}, '
                 f'Уникальных классов: {len(df_cut["RGNTI3"].unique().tolist())}')
-        joblib.dump(pipeline, f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{model_name}.joblib')
+        joblib.dump(pipeline, f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
 
 print(f"Всего: {count}")
-print(f"Среднее значение: {sum / count}")
+print("Среднее значение f1_weighted до аугментации: 0.73")
+print(f"Среднее значение (починили с учетом аугментации) : {sum / count}")
 print(f"Среднее значение без учета аномальных f1(по типу 1.00, 0.75 и т.д.): {sum_real / count_real}")
 print(f"Несоотвествие таблиц кодов(нет имени): {count_no_name}")
-print(f"Пропущено - маленькая выборка: {count_passed_small} ")
+print(f"Пропущено - маленькая выборка: {count_passed_small}(Выборка меньше 10)")
 print(f"Пропущено - один класс: {count_passed_one_label} ")
 print(f"Аномальное f1: {count_high_f1}")
 print(f"Нуждается в аугментации: {count_need_augmentation}")

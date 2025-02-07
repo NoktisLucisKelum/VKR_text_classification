@@ -7,12 +7,11 @@ import string
 from rdkit import Chem
 from rdkit.Chem.Draw import rdMolDraw2D
 import re
-import rdkit
 import difflib
+from rdkit import rdBase
 
 nltk.download('stopwords')
 
-from rdkit import rdBase
 blocker = rdBase.BlockLogs()
 
 russian_stopwords = set(stopwords.words('russian'))

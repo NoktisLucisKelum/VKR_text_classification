@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from sklearn.pipeline import Pipeline
 import joblib
@@ -27,6 +28,9 @@ df_reserve = pd.read_csv(
     "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datatsets_from_git/train/train_ru_work.csv",
     sep="\t", on_bad_lines='skip')
 
+columns = ["Index_name", "Name", "f1_weighted", "f1_micro", "f1_macro", "length", "unique_label", "Augmented"]
+data_tos_save = pd.DataFrame(columns=columns)
+
 MODEL_NAME = 'cointegrated/rut5-base-paraphraser'
 model = T5ForConditionalGeneration.from_pretrained(MODEL_NAME)
 tokenizer = T5Tokenizer.from_pretrained(MODEL_NAME)
@@ -38,6 +42,19 @@ pipeline_0 = Pipeline([
     ('svc', LinearSVC(C=0.65, class_weight='balanced', fit_intercept=False, loss='squared_hinge', max_iter=4000,
                       penalty='l2', tol=0.0001))
 ])
+
+list_of_before_forecasts = ["34.03", "34.15", "34.19", "34.21", "34.23", "34.25", "34.27",
+                            "34.29", "34.31", "34.33", "34.35", "34.37", "34.39", "34.41",
+                            "34.43", "34.45", "34.47", "34.49", "34.55", "47.05", "55.13",
+                            "87.29", "34.15", "53.49"]
+
+
+def files_starting_with_in_directory(directory_path, prefixes):
+    # Получаем все файлы в директории
+    files = os.listdir(directory_path)
+    # Фильтруем файлы, чьи имена начинаются с одного из префиксов
+    matching_files = [f for f in files if any(f.startswith(prefix) for prefix in prefixes)]
+    return matching_files
 
 
 def augment_dataset_with_t5(dataset: pd.DataFrame, text_column: str, class_column: str, iter: int) -> pd.DataFrame:
@@ -105,92 +122,137 @@ for i in list_of_unique:
     except Exception:
         model_name = f"Выборка_с_отсутствующим_названием_{count}"
         count_no_name += 1
-    df_cut = df[df["RGNTI2"] == i]
-    len_of_sample = len(df_cut)
-    if len(df_cut["RGNTI3"].unique().tolist()) == 1:
-        count_passed_one_label += 1
-        print(f"Название темы: {model_name}, Код темы: {i}, Состоит из {len(df_cut["RGNTI3"].unique().tolist())} "
-              f"класса, и имеет размер {len_of_sample}")
-    elif len_of_sample < 10:
-        count_passed_small += 1
-        print(f"Название темы: {model_name}, Код темы: {i}, Состоит из {len(df_cut["RGNTI3"].unique().tolist())} "
-              f"класса, и имеет размер {len_of_sample}")
+    if i in list_of_before_forecasts:
+        pass
     else:
-        X_train, X_test, y_train, y_test = train_test_split(df_cut['body'], df_cut['RGNTI3'],
-                                                            test_size=0.2, random_state=42)
-        pipeline = pipeline_0
-        pipeline.fit(X_train, y_train)
-        y_pred = pipeline.predict(X_test)
-        f1_weighted = f1_score(y_test, y_pred, average="weighted")
-        f1_macro = f1_score(y_test, y_pred, average="macro")
-        f1_micro = f1_score(y_test, y_pred, average="micro")
-        if f1_micro == 1.00 or f1_macro == 1.00 or f1_weighted == 1.00:
-            count_high_f1 += 1
+        df_cut = df[df["RGNTI2"] == i]
+        len_of_sample = len(df_cut)
+        if len(df_cut["RGNTI3"].unique().tolist()) == 1:
+            count_passed_one_label += 1
+            print(f"Название темы: {model_name}, Код темы: {i}, Состоит из {len(df_cut["RGNTI3"].unique().tolist())} "
+                  f"класса, и имеет размер {len_of_sample}")
+        elif len_of_sample < 10:
+            count_passed_small += 1
+            print(f"Название темы: {model_name}, Код темы: {i}, Состоит из {len(df_cut["RGNTI3"].unique().tolist())} "
+                  f"класса, и имеет размер {len_of_sample}")
         else:
-            sum_real += f1_weighted
-            count_real += 1
-        if f1_weighted < 0.73 or f1_micro == 1.00 or f1_macro == 1.00 or f1_weighted == 1.00:
-            count_need_augmentation += 1
-            cycle_len = 1
-            print("___________________________________________________________")
-            print(f"Недостаточный f1: {f1_weighted:.2f}")
-            new_df = df_reserve[df_reserve["RGNTI2"].str.contains(i)]
-
-            preprocessor_iter_1 = TextPreprocessor(new_df)
-            preprocessor_iter_1.drop_nan()
-            preprocessor_iter_1.merge_and_drop_columns('body', 'title')
-
-            iter_1 = preprocessor_iter_1.return_dataset()
-            iter_2 = augment_dataset_with_t5(iter_1, 'body', 'RGNTI3', cycle_len)
-            iter_2.dropna()
-
-            preprocessor_iter_2 = TextPreprocessor(iter_2)
-            preprocessor_iter_2.chem_formula_prepare()
-            preprocessor_iter_2.phys_formula_prepare()
-            preprocessor_iter_2.remove_english_strings()
-            preprocessor_iter_2.lemmatize(['body', 'keywords'])
-            preprocessor_iter_2.remove_punctuation(['body'])
-            # # preprocessor.stem(['text_column'])
-            preprocessor_iter_2.remove_stop_words(['body'])
-            # preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
-            preprocessor_iter_2.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
-            preprocessor_iter_2.drop_columns(["correct"])
-            # preprocessor_iter_2.printing("keywords")
-            # preprocessor_iter_2.printing("body")
-            preprocessor_iter_2.repare_columns()
-            iter_3 = preprocessor_iter_2.return_dataset()
-            print(f"Длина старого датасета: {len(df_cut)}, Длинна датасета который достали из "
-                  f"изнчальной базы: {len(new_df)}, Длинна нового датасета: {len(iter_3)}")
-            print(f'Название темы: {model_name}, F1_новый: {f1_weighted:.2f}, Длина датасета: {len(iter_3)}, '
-                  f"Уникальных классов: {len(iter_3['RGNTI3'].unique().tolist())} Точность недостаточная")
-            X_train, X_test, y_train, y_test = train_test_split(iter_3['body'], iter_3['RGNTI3'],
+            X_train, X_test, y_train, y_test = train_test_split(df_cut['body'], df_cut['RGNTI3'],
                                                                 test_size=0.2, random_state=42)
-            pipeline_new = pipeline
-            pipeline_new.fit(X_train, y_train)
-            y_pred = pipeline_new.predict(X_test)
-            f1_weighted_new = f1_score(y_test, y_pred, average="weighted")
-            f1_macro_new = f1_score(y_test, y_pred, average="macro")
-            f1_micro_new = f1_score(y_test, y_pred, average="micro")
+            pipeline = pipeline_0
+            pipeline.fit(X_train, y_train)
+            y_pred = pipeline.predict(X_test)
+            f1_weighted = f1_score(y_test, y_pred, average="weighted")
+            f1_macro = f1_score(y_test, y_pred, average="macro")
+            f1_micro = f1_score(y_test, y_pred, average="micro")
+            if f1_micro == 1.00 or f1_macro == 1.00 or f1_weighted == 1.00:
+                count_high_f1 += 1
+            else:
+                sum_real += f1_weighted
+                count_real += 1
+            if f1_weighted < 0.73 or f1_micro == 1.00 or f1_macro == 1.00 or f1_weighted == 1.00:
+                """==========================================="""
+                sum += f1_weighted
+                count += 1
+                dict_of_success[i] = f1_weighted
+                data_tos_save = data_tos_save._append({
+                    "Index_name": i,
+                    "Name": model_name,
+                    "f1_weighted": f1_weighted,
+                    "f1_micro": f1_macro,
+                    "f1_macro": f1_micro,
+                    "length": len(df_cut),
+                    "unique_label": len(df_cut["RGNTI3"].unique().tolist())
+                }, ignore_index=True)
+                data_tos_save.to_excel("Results_level_3.xlsx")
+                print(
+                    f'Название темы: {model_name}, Код темы: {i}, F1_weighted: {f1_weighted:.2f}, F1_macro: {f1_macro:.2f}, '
+                    f'F1_micro: {f1_micro:.2f}, Длина датасета: {len(df_cut)}, '
+                    f'Уникальных классов: {len(df_cut["RGNTI3"].unique().tolist())}')
+                joblib.dump(pipeline,
+                            f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
+                """==========================================="""
+                # count_need_augmentation += 1
+                # cycle_len = 1
+                # print("___________________________________________________________")
+                # print(f"Недостаточный f1: {f1_weighted:.2f}")
+                # new_df = df_reserve[df_reserve["RGNTI2"].str.contains(i)]
+                #
+                # preprocessor_iter_1 = TextPreprocessor(new_df)
+                # preprocessor_iter_1.drop_nan()
+                # preprocessor_iter_1.merge_and_drop_columns('body', 'title')
+                #
+                # iter_1 = preprocessor_iter_1.return_dataset()
+                # iter_2 = augment_dataset_with_t5(iter_1, 'body', 'RGNTI3', cycle_len)
+                # iter_2.dropna()
+                #
+                # preprocessor_iter_2 = TextPreprocessor(iter_2)
+                # preprocessor_iter_2.chem_formula_prepare()
+                # preprocessor_iter_2.phys_formula_prepare()
+                # preprocessor_iter_2.remove_english_strings()
+                # preprocessor_iter_2.lemmatize(['body', 'keywords'])
+                # preprocessor_iter_2.remove_punctuation(['body'])
+                # # # preprocessor.stem(['text_column'])
+                # preprocessor_iter_2.remove_stop_words(['body'])
+                # # preprocessor.convert_to_word_list(['title', 'body', 'keywords'])
+                # preprocessor_iter_2.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
+                # preprocessor_iter_2.drop_columns(["correct"])
+                # # preprocessor_iter_2.printing("keywords")
+                # # preprocessor_iter_2.printing("body")
+                # preprocessor_iter_2.repare_columns()
+                # iter_3 = preprocessor_iter_2.return_dataset()
+                # print(f"Длина старого датасета: {len(df_cut)}, Длинна датасета который достали из "
+                #       f"изнчальной базы: {len(new_df)}, Длинна нового датасета: {len(iter_3)}")
+                # print(f'Название темы: {model_name}, F1_новый: {f1_weighted:.2f}, Длина датасета: {len(iter_3)}, '
+                #       f"Уникальных классов: {len(iter_3['RGNTI3'].unique().tolist())} Точность недостаточная")
+                # X_train, X_test, y_train, y_test = train_test_split(iter_3['body'], iter_3['RGNTI3'],
+                #                                                     test_size=0.2, random_state=42)
+                # pipeline_new = pipeline
+                # pipeline_new.fit(X_train, y_train)
+                # y_pred = pipeline_new.predict(X_test)
+                # f1_weighted_new = f1_score(y_test, y_pred, average="weighted")
+                # f1_macro_new = f1_score(y_test, y_pred, average="macro")
+                # f1_micro_new = f1_score(y_test, y_pred, average="micro")
+                #
+                # sum += f1_weighted_new
+                # count += 1
+                # dict_of_success[i] = f1_weighted_new
+                #
+                # print(f'Обновленный датасет. Название темы: {model_name}, F1_weighted: {f1_weighted_new:.2f}%, '
+                #       f'F1_macro: {f1_macro_new:.2f}, F1_micro: {f1_micro_new:.2f}, '
+                #       f'Длина датасета: {len(iter_3)},Уникальных классов: {len(iter_3["RGNTI3"].unique().tolist())}')
+                # joblib.dump(pipeline_new,
+                #             f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
+                # print("___________________________________________________________")
+                # data_tos_save = data_tos_save._append({
+                #     "Index_name": i,
+                #     "Name": model_name,
+                #     "f1_weighted": f1_weighted_new,
+                #     "f1_micro": f1_macro_new,
+                #     "f1_macro": f1_micro_new,
+                #     "length": len(df_cut),
+                #     "unique_label": len(df_cut["RGNTI3"].unique().tolist())
+                # }, ignore_index=True)
+                # data_tos_save.to_csv("Results_level_3.csv")
 
-            sum += f1_weighted_new
-            count += 1
-            dict_of_success[i] = f1_weighted_new
-
-            print(f'Обновленный датасет. Название темы: {model_name}, F1_weighted: {f1_weighted_new:.2f}%, '
-                  f'F1_macro: {f1_macro_new:.2f}, F1_micro: {f1_micro_new:.2f}, '
-                  f'Длина датасета: {len(iter_3)},Уникальных классов: {len(iter_3["RGNTI3"].unique().tolist())}')
-            joblib.dump(pipeline_new,
-                        f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
-            print("___________________________________________________________")
-        else:
-            sum += f1_weighted
-            count += 1
-            dict_of_success[i] = f1_weighted
-            print(
-                f'Название темы: {model_name}, Код темы: {i}, F1_weighted: {f1_weighted:.2f}, F1_macro: {f1_macro:.2f}, '
-                f'F1_micro: {f1_micro:.2f}, Длина датасета: {len(df_cut)}, '
-                f'Уникальных классов: {len(df_cut["RGNTI3"].unique().tolist())}')
-        joblib.dump(pipeline, f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
+            else:
+                sum += f1_weighted
+                count += 1
+                dict_of_success[i] = f1_weighted
+                data_tos_save = data_tos_save._append({
+                    "Index_name": i,
+                    "Name": model_name,
+                    "f1_weighted": f1_weighted,
+                    "f1_micro": f1_macro,
+                    "f1_macro": f1_micro,
+                    "length": len(df_cut),
+                    "unique_label": len(df_cut["RGNTI3"].unique().tolist())
+                }, ignore_index=True)
+                data_tos_save.to_excel("Results_level_3.xlsx")
+                print(
+                    f'Название темы: {model_name}, Код темы: {i}, F1_weighted: {f1_weighted:.2f}, F1_macro: {f1_macro:.2f}, '
+                    f'F1_micro: {f1_micro:.2f}, Длина датасета: {len(df_cut)}, '
+                    f'Уникальных классов: {len(df_cut["RGNTI3"].unique().tolist())}')
+            joblib.dump(pipeline, f'/Users/denismazepa/Desktop/Py_projects/VKR/models/level_3_models/{i}_{model_name}.joblib')
 
 print(f"Всего: {count}")
 print("Среднее значение f1_weighted до аугментации: 0.73")

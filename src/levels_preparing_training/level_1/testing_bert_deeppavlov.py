@@ -36,7 +36,7 @@ train_df, val_df = train_test_split(
 # 3. Класс датасета (PyTorch)
 # ----------------------------
 class TextDataset(Dataset):
-    def __init__(self, texts, labels, tokenizer, max_len=500):
+    def __init__(self, texts, labels, tokenizer, max_len=300):
         self.texts = texts
         self.labels = labels
         self.tokenizer = tokenizer
@@ -57,8 +57,7 @@ class TextDataset(Dataset):
             max_length=self.max_len,
             return_tensors='pt'
         )
-        # encoding['input_ids'] -> тензор размерности [1, max_len]
-        # нам удобно вернуть "сплющенные" тензоры [max_len], поэтому возьмём .squeeze()
+
         item = {key: val.squeeze() for key, val in encoding.items()}
         item['labels'] = torch.tensor(label, dtype=torch.long)
 
@@ -69,7 +68,7 @@ class TextDataset(Dataset):
 print("4. Создаем датасеты и DataLoader-ы")
 # ----------------------------
 
-model_name = "cointegrated/rubert-tiny2"
+model_name = "DeepPavlov/rubert-base-cased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 train_dataset = TextDataset(
@@ -101,11 +100,11 @@ model = AutoModelForSequenceClassification.from_pretrained(
     num_labels=len(unique_labels)  # важно указать, сколько у нас классов
 )
 
-# Перенесём на GPU при возможности
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
-# Определим оптимизатор и функцию потерь
+
 optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
 loss_fn = nn.CrossEntropyLoss()
 
@@ -234,3 +233,4 @@ test_text = ("Влияние изменения параметров элект�
 pred_label, conf = predict_class(test_text)
 print(f"Текст: {test_text}")
 print(f"Предсказанный класс: {pred_label}, вероятность: {conf:.4f}")
+

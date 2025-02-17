@@ -75,8 +75,7 @@ class DataFrameToJsonTree:
 # processor = JSONProcessor('../../grnti/GRNTI_1_ru.json', '../../grnti/GRNTI_2_ru.json', '../../grnti/GRNTI_3_ru.json', '../../result.json')
 # processor.process()
 
-df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/test_refactored_"
-                 "lematize_cut_final.csv")
+df = pd.read_csv("files/train_refactored_lematize_new.csv")
 preproc = DataFrameToJsonTree(df)
 preproc.create_tree()
-preproc.save_to_json("result_from_test_datatset.json")
+preproc.save_to_json("files/result_from_test_datatset_new.json")

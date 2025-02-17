@@ -123,6 +123,25 @@ class TextPreprocessor:
         for column in columns:
             self.df[column] = self.df[column].str.split('\\', n=1).str[0]
 
+    def split_column_value(self, column_name: str, new_column_name: str = 'new_column'):
+        """
+        Принимает на вход DataFrame и название столбца.
+        Из значения столбца выделяет часть строки после символа '/' и
+        записывает её в новый столбец, который по умолчанию называется 'new_column'.
+        Возвращает изменённый DataFrame.
+        """
+
+        def get_second_part(value):
+            if pd.isna(value):
+                return None
+            parts = value.split('\\')
+            if len(parts) > 1:
+                return parts[1]
+            return parts[0]
+
+        # Применяем функцию к нужному столбцу и сохраняем результат в новый столбец
+        self.df[new_column_name] = self.df[column_name].apply(get_second_part)
+
     def lemmatize(self, columns: list):
         """Лемматизация"""
         for column in columns:

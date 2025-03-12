@@ -36,7 +36,7 @@ train_df, val_df = train_test_split(
 # 3. Класс датасета (PyTorch)
 # ----------------------------
 class TextDataset(Dataset):
-    def __init__(self, texts, labels, tokenizer, max_len=300):
+    def __init__(self, texts, labels, tokenizer, max_len=500):
         self.texts = texts
         self.labels = labels
         self.tokenizer = tokenizer
@@ -111,7 +111,7 @@ loss_fn = nn.CrossEntropyLoss()
 
 print("6. Цикл обучения")
 
-epochs = 3  # Для примера
+epochs = 2  # Для примера
 
 for epoch in range(epochs):
     print(f"\n=== Epoch {epoch + 1}/{epochs} ===")
@@ -187,8 +187,8 @@ for epoch in range(epochs):
 # ----------------------------
 print("7. Сохранение модели")
 # ----------------------------
-# Сохраним модель и токенайзер в папку rubert_tiny2_model
-save_path = "robert_model"
+
+save_path = "robert_model_last"
 model.save_pretrained(save_path)
 tokenizer.save_pretrained(save_path)
 

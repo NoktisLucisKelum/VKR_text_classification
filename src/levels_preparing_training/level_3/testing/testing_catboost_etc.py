@@ -21,7 +21,7 @@ from sklearn.model_selection import GridSearchCV
 
 # Загрузите ваш датасет
 df = pd.read_csv(
-    '/datasets/datasets_final/train_refactored_lematize_cut_final.csv',
+    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv',
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 
 df_1 = df[(df['RGNTI1'] == '34') & (df['RGNTI2'] == '34.39')]
@@ -356,4 +356,26 @@ def testing_after_gridsearch():
 
 # grid_search_scv()
 
-testing_after_gridsearch()
+# testing_after_gridsearch()
+
+
+def testing_tfidf_upgrade():
+    for i in dict_of_frames.keys():
+        X_train, X_test, y_train, y_test = train_test_split(dict_of_frames[i][0]['body'],
+                                                            dict_of_frames[i][0]['RGNTI3'],
+                                                            test_size=0.2, random_state=42)
+        pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer(max_df=0.5, ngram_range=(1, 1), use_idf=True)),
+            ('svc', LinearSVC(C=0.65, class_weight='balanced', fit_intercept=False, loss='squared_hinge', max_iter=4000,
+                              penalty='l2', tol=0.0001))
+        ])
+        pipeline.fit(X_train, y_train)
+        y_pred = pipeline.predict(X_test)
+        f1 = f1_score(y_test, y_pred, average="weighted")
+        print(
+            f' Датасет: {i}, Векторизатор: TF-IDF, F1 Score: {f1:.3f}, Длина датасета: {len(dict_of_frames[i][0])},'
+            f'Количество классов в датасете:  {len(dict_of_frames[i][0]['RGNTI3'].unique().tolist())},'
+            f'  Тема: {dict_of_frames[i][1]}')
+
+
+testing_tfidf_upgrade()

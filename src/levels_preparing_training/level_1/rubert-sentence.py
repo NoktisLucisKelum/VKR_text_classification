@@ -6,16 +6,17 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 import numpy as np
-
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from equal_df import select_100_per_group
 
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
 df = pd.read_csv(
-    "train_refactored_lematize_cut_final.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 
 df = select_100_per_group(df, "RGNTI1")
 unique_labels = sorted(df['RGNTI1'].unique().tolist())
+print(unique_labels)
 label2id = {label: i for i, label in enumerate(unique_labels)}
 id2label = {i: label for label, i in label2id.items()}
 
@@ -69,7 +70,7 @@ class TextDataset(Dataset):
 print("4. Создаем датасеты и DataLoader-ы")
 # ----------------------------
 
-model_name = "blinoff/roberta-base-russian-v0"
+model_name = "DeepPavlov/rubert-base-cased-sentence"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 train_dataset = TextDataset(
@@ -112,7 +113,7 @@ loss_fn = nn.CrossEntropyLoss()
 
 print("6. Цикл обучения")
 
-epochs = 3  # Для примера
+epochs = 2  # Для примера
 
 for epoch in range(epochs):
     print(f"\n=== Epoch {epoch + 1}/{epochs} ===")
@@ -189,7 +190,7 @@ for epoch in range(epochs):
 print("7. Сохранение модели")
 # ----------------------------
 # Сохраним модель и токенайзер в папку rubert_tiny2_model
-save_path = "robert_model"
+save_path = "rubert_sentence_model"
 model.save_pretrained(save_path)
 tokenizer.save_pretrained(save_path)
 

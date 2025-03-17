@@ -21,7 +21,7 @@ from sklearn.model_selection import GridSearchCV
 
 # Загрузите ваш датасет
 df = pd.read_csv(
-    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv',
+    '/datasets/datasets_final/for_1_level/train_refactored_lematize_cut_final.csv',
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 
 df_1 = df[(df['RGNTI1'] == '34') & (df['RGNTI2'] == '34.39')]

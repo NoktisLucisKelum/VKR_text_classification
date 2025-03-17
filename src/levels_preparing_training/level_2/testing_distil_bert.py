@@ -24,13 +24,11 @@ def filter_common_values(df1, df2, column_name):
     return filtered_df1, filtered_df2
 
 
-train_df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/"
-                       "datasets/datasets_final/train_refactored_lematize_cut_final.csv",
+train_df = pd.read_csv("/datasets/datasets_final/for_1_level/train_refactored_lematize_cut_final.csv",
                        dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 train_df = train_df[train_df['RGNTI1'] == "50"]
 # print(train_df['RGNTI1'].value_counts())
-valid_df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/"
-                       "datasets_final/test_refactored_lematize_cut_final.csv",
+valid_df = pd.read_csv("/datasets/datasets_final/for_1_level/test_refactored_lematize_cut_final.csv",
                        dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 valid_df = valid_df[valid_df['RGNTI1'] == "50"]
 

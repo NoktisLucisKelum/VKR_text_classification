@@ -16,7 +16,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 df = pd.read_csv(
-    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_2_3_level.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 print(0)
 
@@ -44,7 +44,7 @@ pipeline_0 = Pipeline([
 ])
 
 list_of_before_forecasts = ["34.03", "34.15", "34.19", "34.21", "34.23", "34.25", "34.27",
-                            "34.29", "34.31", "34.33", "34.35", "34.37", "34.39", "34.41",
+                            "34.29", "34.31", "34.333", "34.35", "34.37", "34.39", "34.41",
                             "34.43", "34.45", "34.47", "34.49", "34.55", "47.05", "55.13",
                             "87.29", "34.15", "53.49"]
 

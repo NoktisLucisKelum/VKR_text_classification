@@ -11,7 +11,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from equal_df import select_100_per_group
 
 df = pd.read_csv(
-    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv",
+    "/datasets/datasets_final/for_1_level/train_refactored_lematize_cut_final.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 
 df = select_100_per_group(df, "RGNTI1")

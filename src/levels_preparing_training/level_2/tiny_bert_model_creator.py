@@ -13,9 +13,10 @@ from sklearn.metrics import f1_score
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 df = pd.read_csv(
-    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_2_3_level.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 old_unique_labels = df["RGNTI1"].unique().tolist()
+print(old_unique_labels)
 
 columns = ["Index_name", "Name", "f1_weighted", "f1_micro", "f1_macro", "length", "unique_label"]
 data = pd.DataFrame(columns=columns)
@@ -28,20 +29,37 @@ true_models_df = pd.read_excel("/Users/denismazepa/Desktop/Py_projects/VKR/src/l
 
 list_of_grnti_indexes = true_models_df["Index_name"].unique().tolist()
 
-
-for i in old_unique_labels[2:7]:
+print(list_of_grnti_indexes)
+for i in old_unique_labels:
     new_df = df[df["RGNTI1"] == i]
 
     # ----------------------------------------------------------------------------
     print("1. Разделение на train / val / test")
+    print(i, type(i))
+    new_df = new_df[new_df["RGNTI2"].isin(list_of_grnti_indexes)]
+    unique_labels = sorted(new_df['RGNTI2'].unique().tolist())
+    print(unique_labels)
+    if i == '75':
+        print(f"{i}: точное попадание. Итоговый класс: 75.31.19")
+        continue
     # ----------------------------------------------------------------------------
     # train_df, test_df = train_test_split(
     #     df, test_size=0.15, random_state=42, stratify=df['label_id']
     # )
-    new_df = new_df[new_df["RGNTI2"].isin(list_of_grnti_indexes)]
-    print(list_of_grnti_indexes)
-    unique_labels = sorted(new_df['RGNTI2'].unique().tolist())
     print(unique_labels)
+    if len(unique_labels) == 1:
+        data = data._append({
+            "Index_name": i,
+            "Name": json_data[i],
+            "f1_weighted": 0,
+            "f1_micro": 0,
+            "f1_macro": 0,
+            "length": 0,
+            "unique_label": 1
+        }, ignore_index=True)
+        data.to_excel("Results_level_2.xlsx")
+        continue
+
     label2id = {label: i for i, label in enumerate(unique_labels)}
     id2label = {i: label for label, i in label2id.items()}
 
@@ -52,7 +70,7 @@ for i in old_unique_labels[2:7]:
 
 
     class TextDataset(Dataset):
-        def __init__(self, texts, labels, tokenizer, max_len=64):
+        def __init__(self, texts, labels, tokenizer, max_len=128):
             self.texts = texts
             self.labels = labels
             self.tokenizer = tokenizer

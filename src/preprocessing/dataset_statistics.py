@@ -96,9 +96,9 @@ class DataAnalyzer:
 
 
 df = pd.read_csv(
-    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/test_refactored_lematize_cut_final.csv')
+    '/datasets/datasets_final/for_1_level/test_refactored_lematize_cut_final.csv')
 df_2 = pd.read_csv(
-    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/train_refactored_lematize_cut_final.csv')
+    '/datasets/datasets_final/for_1_level/train_refactored_lematize_cut_final.csv')
 statisticer = DataAnalyzer(df_2)
 # analyze_tokens(df_2, "Train dataset")
 # analyze_tokens(df, "Test dataset")

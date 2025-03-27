@@ -1,0 +1,225 @@
+df_numbers = pd.read_csv(
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_2_3_level.csv",
+    dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
+
+df_no_number = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/src/preprocessing/train_refactored_lematize_no_numbers_2_3.csv",
+                           dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
+
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/bin/python /Users/denismazepa/Desktop/Py_projects/VKR/testing_datassets/compare_bert.py
+False
+438
+['87', '47', '53', '55', '31', '65', '39', '44', '34', '61', '27', '52', '89', '67', '30', '81', '29', '73', '60', '06', '20', '41', '62', '38', '76', '50', '49', '37', '28', '90', '64', '45', '70', '82', '15', '36', '68', '66', '19', '12', '75', '69']
+11459
+['44.01', '44.09', '44.29', '44.31', '44.33', '44.35', '44.37', '44.39', '44.41']
+3. Разделение на train / val / test
+/Users/denismazepa/Desktop/Py_projects/VKR/testing_datassets/compare_bert.py:27: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['label_id'] = df['RGNTI2'].apply(lambda x: label2id[x])
+4. Создаем датасеты и DataLoader-ы
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/transformers/tokenization_utils_base.py:1617: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be deprecated in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+5. Инициализация модели
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at cointegrated/rubert-tiny2 and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+6. Цикл обучения
+
+=== Epoch 1/2 ===
+Batch 3/645, Loss: 2.0787, F1 (weighted): 0.2143, F1 (macro): 0.1143, F1 (micro): 0.3750
+Batch 23/645, Loss: 2.3314, F1 (weighted): 0.0592, F1 (macro): 0.0395, F1 (micro): 0.1875
+Batch 43/645, Loss: 2.2567, F1 (weighted): 0.0592, F1 (macro): 0.0395, F1 (micro): 0.1875
+Batch 63/645, Loss: 1.5370, F1 (weighted): 0.4836, F1 (macro): 0.3095, F1 (micro): 0.6250
+Batch 83/645, Loss: 1.2516, F1 (weighted): 0.5214, F1 (macro): 0.2367, F1 (micro): 0.6250
+Batch 103/645, Loss: 1.4942, F1 (weighted): 0.3958, F1 (macro): 0.2778, F1 (micro): 0.5000
+Batch 123/645, Loss: 0.9485, F1 (weighted): 0.6696, F1 (macro): 0.6714, F1 (micro): 0.7500
+Batch 143/645, Loss: 1.4927, F1 (weighted): 0.4821, F1 (macro): 0.3714, F1 (micro): 0.5625
+Batch 163/645, Loss: 0.7639, F1 (weighted): 0.6375, F1 (macro): 0.4286, F1 (micro): 0.6875
+Batch 183/645, Loss: 1.1753, F1 (weighted): 0.6029, F1 (macro): 0.3670, F1 (micro): 0.6250
+Batch 203/645, Loss: 1.7301, F1 (weighted): 0.3333, F1 (macro): 0.3095, F1 (micro): 0.4375
+Batch 223/645, Loss: 1.4725, F1 (weighted): 0.4940, F1 (macro): 0.3810, F1 (micro): 0.5625
+Batch 243/645, Loss: 1.4502, F1 (weighted): 0.4663, F1 (macro): 0.3276, F1 (micro): 0.5000
+Batch 263/645, Loss: 0.9510, F1 (weighted): 0.6193, F1 (macro): 0.4826, F1 (micro): 0.6875
+Batch 283/645, Loss: 0.7586, F1 (weighted): 0.6938, F1 (macro): 0.4747, F1 (micro): 0.7500
+Batch 303/645, Loss: 0.6085, F1 (weighted): 0.8264, F1 (macro): 0.6944, F1 (micro): 0.8750
+Batch 323/645, Loss: 0.6698, F1 (weighted): 0.8462, F1 (macro): 0.7821, F1 (micro): 0.8750
+Batch 343/645, Loss: 0.7991, F1 (weighted): 0.6656, F1 (macro): 0.4595, F1 (micro): 0.6875
+Batch 363/645, Loss: 0.5362, F1 (weighted): 0.9268, F1 (macro): 0.7071, F1 (micro): 0.8750
+Batch 383/645, Loss: 0.7991, F1 (weighted): 0.7479, F1 (macro): 0.7095, F1 (micro): 0.7500
+Batch 403/645, Loss: 0.8927, F1 (weighted): 0.7898, F1 (macro): 0.7706, F1 (micro): 0.8125
+Batch 423/645, Loss: 0.8406, F1 (weighted): 0.7399, F1 (macro): 0.5988, F1 (micro): 0.7500
+Batch 443/645, Loss: 0.2902, F1 (weighted): 0.8482, F1 (macro): 0.6429, F1 (micro): 0.8750
+Batch 463/645, Loss: 0.8616, F1 (weighted): 0.5993, F1 (macro): 0.4526, F1 (micro): 0.6250
+Batch 483/645, Loss: 0.1985, F1 (weighted): 0.9435, F1 (macro): 0.9048, F1 (micro): 0.9375
+Batch 503/645, Loss: 1.0415, F1 (weighted): 0.6269, F1 (macro): 0.4563, F1 (micro): 0.5625
+Batch 523/645, Loss: 0.6365, F1 (weighted): 0.7431, F1 (macro): 0.6173, F1 (micro): 0.7500
+Batch 543/645, Loss: 0.4639, F1 (weighted): 0.9250, F1 (macro): 0.8286, F1 (micro): 0.8750
+Batch 563/645, Loss: 0.5751, F1 (weighted): 0.7268, F1 (macro): 0.4696, F1 (micro): 0.6875
+Batch 583/645, Loss: 0.4433, F1 (weighted): 0.8966, F1 (macro): 0.7018, F1 (micro): 0.8750
+Batch 603/645, Loss: 0.5572, F1 (weighted): 0.8703, F1 (macro): 0.9125, F1 (micro): 0.8750
+Batch 623/645, Loss: 0.1805, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 643/645, Loss: 0.7580, F1 (weighted): 0.7333, F1 (macro): 0.5381, F1 (micro): 0.6875
+Validation F1 (weighted): 0.8539, Validation F1 (macro): 0.7981, Validation F1 (micro): 0.8551
+
+=== Epoch 2/2 ===
+Batch 3/645, Loss: 0.3072, F1 (weighted): 0.8750, F1 (macro): 0.8600, F1 (micro): 0.8750
+Batch 23/645, Loss: 0.7513, F1 (weighted): 0.7583, F1 (macro): 0.5704, F1 (micro): 0.6875
+Batch 43/645, Loss: 0.3793, F1 (weighted): 0.8492, F1 (macro): 0.8005, F1 (micro): 0.8750
+Batch 63/645, Loss: 0.2740, F1 (weighted): 0.9083, F1 (macro): 0.8667, F1 (micro): 0.9375
+Batch 83/645, Loss: 0.1102, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 103/645, Loss: 0.1753, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 123/645, Loss: 0.4439, F1 (weighted): 0.8659, F1 (macro): 0.6343, F1 (micro): 0.8125
+Batch 143/645, Loss: 0.6010, F1 (weighted): 0.8674, F1 (macro): 0.8823, F1 (micro): 0.8750
+Batch 163/645, Loss: 0.6345, F1 (weighted): 0.6713, F1 (macro): 0.5686, F1 (micro): 0.6250
+Batch 183/645, Loss: 0.3479, F1 (weighted): 0.9375, F1 (macro): 0.7500, F1 (micro): 0.9375
+Batch 203/645, Loss: 0.4362, F1 (weighted): 0.8315, F1 (macro): 0.6655, F1 (micro): 0.8125
+Batch 223/645, Loss: 0.4602, F1 (weighted): 0.8750, F1 (macro): 0.7407, F1 (micro): 0.8750
+Batch 243/645, Loss: 0.3666, F1 (weighted): 0.8494, F1 (macro): 0.7663, F1 (micro): 0.8750
+Batch 263/645, Loss: 0.4053, F1 (weighted): 0.8250, F1 (macro): 0.7643, F1 (micro): 0.8125
+Batch 283/645, Loss: 0.4166, F1 (weighted): 0.8205, F1 (macro): 0.6513, F1 (micro): 0.8125
+Batch 303/645, Loss: 0.3206, F1 (weighted): 0.8403, F1 (macro): 0.7460, F1 (micro): 0.8125
+Batch 323/645, Loss: 0.3272, F1 (weighted): 0.8646, F1 (macro): 0.8704, F1 (micro): 0.8750
+Batch 343/645, Loss: 0.5864, F1 (weighted): 0.8740, F1 (macro): 0.7910, F1 (micro): 0.8750
+Batch 363/645, Loss: 0.7671, F1 (weighted): 0.7112, F1 (macro): 0.4529, F1 (micro): 0.7500
+Batch 383/645, Loss: 0.1737, F1 (weighted): 0.8601, F1 (macro): 0.7738, F1 (micro): 0.8750
+Batch 403/645, Loss: 0.2634, F1 (weighted): 0.9375, F1 (macro): 0.7143, F1 (micro): 0.9375
+Batch 423/645, Loss: 0.4706, F1 (weighted): 0.8958, F1 (macro): 0.7810, F1 (micro): 0.8750
+Batch 443/645, Loss: 0.0530, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 463/645, Loss: 0.2656, F1 (weighted): 0.9097, F1 (macro): 0.8413, F1 (micro): 0.9375
+Batch 483/645, Loss: 0.4386, F1 (weighted): 0.8708, F1 (macro): 0.8762, F1 (micro): 0.8750
+Batch 503/645, Loss: 0.2725, F1 (weighted): 0.9643, F1 (macro): 0.8367, F1 (micro): 0.9375
+Batch 523/645, Loss: 0.3120, F1 (weighted): 0.8393, F1 (macro): 0.6429, F1 (micro): 0.8125
+Batch 543/645, Loss: 0.3552, F1 (weighted): 0.8792, F1 (macro): 0.8830, F1 (micro): 0.8750
+Batch 563/645, Loss: 0.1997, F1 (weighted): 0.9289, F1 (macro): 0.9216, F1 (micro): 0.9375
+Batch 583/645, Loss: 0.1148, F1 (weighted): 0.9097, F1 (macro): 0.7778, F1 (micro): 0.9375
+Batch 603/645, Loss: 0.3537, F1 (weighted): 0.8740, F1 (macro): 0.7183, F1 (micro): 0.8750
+Batch 623/645, Loss: 0.1728, F1 (weighted): 0.9653, F1 (macro): 0.8611, F1 (micro): 0.9375
+Batch 643/645, Loss: 0.3382, F1 (weighted): 0.9333, F1 (macro): 0.9333, F1 (micro): 0.9375
+Validation F1 (weighted): 0.8945, Validation F1 (macro): 0.8615, Validation F1 (micro): 0.8962
+11459
+['44.01', '44.09', '44.29', '44.31', '44.33', '44.35', '44.37', '44.39', '44.41']
+3. Разделение на train / val / test
+4. Создаем датасеты и DataLoader-ы
+/Users/denismazepa/Desktop/Py_projects/VKR/testing_datassets/compare_bert.py:27: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['label_id'] = df['RGNTI2'].apply(lambda x: label2id[x])
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/lib/python3.12/site-packages/transformers/tokenization_utils_base.py:1617: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be deprecated in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+5. Инициализация модели
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at cointegrated/rubert-tiny2 and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+6. Цикл обучения
+
+=== Epoch 1/2 ===
+Batch 3/645, Loss: 2.1292, F1 (weighted): 0.1488, F1 (macro): 0.0952, F1 (micro): 0.3125
+Batch 23/645, Loss: 1.6497, F1 (weighted): 0.4121, F1 (macro): 0.1978, F1 (micro): 0.5000
+Batch 43/645, Loss: 1.6447, F1 (weighted): 0.3393, F1 (macro): 0.1531, F1 (micro): 0.4375
+Batch 63/645, Loss: 1.4158, F1 (weighted): 0.3333, F1 (macro): 0.2222, F1 (micro): 0.5000
+Batch 83/645, Loss: 1.0455, F1 (weighted): 0.6687, F1 (macro): 0.4021, F1 (micro): 0.7500
+Batch 103/645, Loss: 0.9509, F1 (weighted): 0.7867, F1 (macro): 0.6921, F1 (micro): 0.8125
+Batch 123/645, Loss: 0.9690, F1 (weighted): 0.7025, F1 (macro): 0.4247, F1 (micro): 0.6875
+Batch 143/645, Loss: 0.8819, F1 (weighted): 0.7873, F1 (macro): 0.5779, F1 (micro): 0.8125
+Batch 163/645, Loss: 0.7489, F1 (weighted): 0.7508, F1 (macro): 0.5537, F1 (micro): 0.7500
+Batch 183/645, Loss: 0.6801, F1 (weighted): 0.7524, F1 (macro): 0.4095, F1 (micro): 0.7500
+Batch 203/645, Loss: 0.6530, F1 (weighted): 0.8690, F1 (macro): 0.8968, F1 (micro): 0.8750
+Batch 223/645, Loss: 0.4978, F1 (weighted): 0.8542, F1 (macro): 0.4444, F1 (micro): 0.8750
+Batch 243/645, Loss: 0.9156, F1 (weighted): 0.7396, F1 (macro): 0.7857, F1 (micro): 0.8125
+Batch 263/645, Loss: 0.6127, F1 (weighted): 0.8625, F1 (macro): 0.7111, F1 (micro): 0.8750
+Batch 283/645, Loss: 0.5141, F1 (weighted): 0.7083, F1 (macro): 0.5208, F1 (micro): 0.7500
+Batch 303/645, Loss: 0.3464, F1 (weighted): 0.8438, F1 (macro): 0.8125, F1 (micro): 0.8750
+Batch 323/645, Loss: 0.2829, F1 (weighted): 0.9375, F1 (macro): 0.7143, F1 (micro): 0.9375
+Batch 343/645, Loss: 0.6466, F1 (weighted): 0.8920, F1 (macro): 0.7700, F1 (micro): 0.8750
+Batch 363/645, Loss: 0.4649, F1 (weighted): 0.8396, F1 (macro): 0.7441, F1 (micro): 0.8750
+Batch 383/645, Loss: 0.4229, F1 (weighted): 0.8482, F1 (macro): 0.6984, F1 (micro): 0.8750
+Batch 403/645, Loss: 0.3911, F1 (weighted): 0.8914, F1 (macro): 0.8780, F1 (micro): 0.8750
+Batch 423/645, Loss: 0.5285, F1 (weighted): 0.9034, F1 (macro): 0.7870, F1 (micro): 0.8750
+Batch 443/645, Loss: 0.4611, F1 (weighted): 0.8905, F1 (macro): 0.4161, F1 (micro): 0.8125
+Batch 463/645, Loss: 0.8546, F1 (weighted): 0.7708, F1 (macro): 0.6250, F1 (micro): 0.7500
+Batch 483/645, Loss: 0.8739, F1 (weighted): 0.8333, F1 (macro): 0.7534, F1 (micro): 0.8125
+Batch 503/645, Loss: 0.7477, F1 (weighted): 0.7484, F1 (macro): 0.5124, F1 (micro): 0.7500
+Batch 523/645, Loss: 0.6315, F1 (weighted): 0.6854, F1 (macro): 0.6333, F1 (micro): 0.6875
+Batch 543/645, Loss: 0.2792, F1 (weighted): 0.9091, F1 (macro): 0.8636, F1 (micro): 0.9375
+Batch 563/645, Loss: 0.5782, F1 (weighted): 0.9034, F1 (macro): 0.6515, F1 (micro): 0.8750
+Batch 583/645, Loss: 0.3251, F1 (weighted): 0.8819, F1 (macro): 0.6508, F1 (micro): 0.8750
+Batch 603/645, Loss: 0.3384, F1 (weighted): 0.8739, F1 (macro): 0.7624, F1 (micro): 0.8750
+Batch 623/645, Loss: 0.7773, F1 (weighted): 0.8222, F1 (macro): 0.6698, F1 (micro): 0.8750
+Batch 643/645, Loss: 0.3313, F1 (weighted): 0.9125, F1 (macro): 0.7600, F1 (micro): 0.9375
+Validation F1 (weighted): 0.8744, Validation F1 (macro): 0.8313, Validation F1 (micro): 0.8770
+
+=== Epoch 2/2 ===
+Batch 3/645, Loss: 0.4401, F1 (weighted): 0.8482, F1 (macro): 0.7796, F1 (micro): 0.8750
+Batch 23/645, Loss: 0.1755, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 43/645, Loss: 0.3628, F1 (weighted): 0.9583, F1 (macro): 0.8095, F1 (micro): 0.9375
+Batch 63/645, Loss: 0.3870, F1 (weighted): 0.8681, F1 (macro): 0.6944, F1 (micro): 0.8750
+Batch 83/645, Loss: 0.0654, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 103/645, Loss: 0.3456, F1 (weighted): 0.8992, F1 (macro): 0.7293, F1 (micro): 0.8750
+Batch 123/645, Loss: 0.5033, F1 (weighted): 0.8774, F1 (macro): 0.9034, F1 (micro): 0.8750
+Batch 143/645, Loss: 0.4408, F1 (weighted): 0.8795, F1 (macro): 0.7653, F1 (micro): 0.8750
+Batch 163/645, Loss: 0.2952, F1 (weighted): 0.9391, F1 (macro): 0.9610, F1 (micro): 0.9375
+Batch 183/645, Loss: 0.1051, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 203/645, Loss: 0.1537, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 223/645, Loss: 0.8666, F1 (weighted): 0.7482, F1 (macro): 0.7762, F1 (micro): 0.7500
+Batch 243/645, Loss: 0.1814, F1 (weighted): 0.9107, F1 (macro): 0.8095, F1 (micro): 0.9375
+Batch 263/645, Loss: 0.4011, F1 (weighted): 0.8701, F1 (macro): 0.5513, F1 (micro): 0.8750
+Batch 283/645, Loss: 0.0663, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 303/645, Loss: 0.2341, F1 (weighted): 0.9292, F1 (macro): 0.9333, F1 (micro): 0.9375
+Batch 323/645, Loss: 0.1012, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 343/645, Loss: 0.3068, F1 (weighted): 0.8778, F1 (macro): 0.8603, F1 (micro): 0.8750
+Batch 363/645, Loss: 0.5082, F1 (weighted): 0.7424, F1 (macro): 0.5220, F1 (micro): 0.7500
+Batch 383/645, Loss: 0.5340, F1 (weighted): 0.7917, F1 (macro): 0.7037, F1 (micro): 0.8125
+Batch 403/645, Loss: 0.2452, F1 (weighted): 0.8775, F1 (macro): 0.8904, F1 (micro): 0.8750
+Batch 423/645, Loss: 0.2343, F1 (weighted): 0.9444, F1 (macro): 0.9111, F1 (micro): 0.9375
+Batch 443/645, Loss: 0.3748, F1 (weighted): 0.8782, F1 (macro): 0.9016, F1 (micro): 0.8750
+Batch 463/645, Loss: 0.4044, F1 (weighted): 0.9435, F1 (macro): 0.9206, F1 (micro): 0.9375
+Batch 483/645, Loss: 0.4261, F1 (weighted): 0.7305, F1 (macro): 0.6277, F1 (micro): 0.8125
+Batch 503/645, Loss: 0.0926, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 523/645, Loss: 0.6435, F1 (weighted): 0.7193, F1 (macro): 0.4739, F1 (micro): 0.7500
+Batch 543/645, Loss: 0.2004, F1 (weighted): 0.8750, F1 (macro): 0.9000, F1 (micro): 0.8750
+Batch 563/645, Loss: 0.2504, F1 (weighted): 0.9097, F1 (macro): 0.7778, F1 (micro): 0.9375
+Batch 583/645, Loss: 0.1320, F1 (weighted): 1.0000, F1 (macro): 1.0000, F1 (micro): 1.0000
+Batch 603/645, Loss: 0.1995, F1 (weighted): 0.9625, F1 (macro): 0.8500, F1 (micro): 0.9375
+Batch 623/645, Loss: 0.4397, F1 (weighted): 0.8681, F1 (macro): 0.6944, F1 (micro): 0.8750
+Batch 643/645, Loss: 0.3296, F1 (weighted): 0.8462, F1 (macro): 0.7021, F1 (micro): 0.8125
+Validation F1 (weighted): 0.9157, Validation F1 (macro): 0.8923, Validation F1 (micro): 0.9154
+
+Process finished with exit code 0
+
+
+/Users/denismazepa/Desktop/Py_projects/VKR/venv/PycharmProjects/bin/python /Users/denismazepa/Desktop/Py_projects/VKR/testing_datassets/compare_tf_idf.py
+Тип датасета: Обычный Датасет: 1, Векторизатор: TF-IDF, F1 Score: 0.780, Длина датасета: 9232,Количество классов в датасете:  23,  Тема: Физиология человека и животных
+Тип датасета: Обычный Датасет: 2, Векторизатор: TF-IDF, F1 Score: 0.681, Длина датасета: 101,Количество классов в датасете:  9,  Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Тип датасета: Обычный Датасет: 3, Векторизатор: TF-IDF, F1 Score: 0.883, Длина датасета: 2480,Количество классов в датасете:  10,  Тема: Химическое и нефтяное машиностроение
+Тип датасета: Обычный Датасет: 4, Векторизатор: TF-IDF, F1 Score: 0.695, Длина датасета: 338,Количество классов в датасете:  17,  Тема: Общие вопросы автоматики и вычислительной техники
+Тип датасета: Обычный Датасет: 5, Векторизатор: TF-IDF, F1 Score: 0.631, Длина датасета: 1392,Количество классов в датасете:  18,  Тема: Физика плазмы
+Тип датасета: Обычный Датасет: 6, Векторизатор: TF-IDF, F1 Score: 0.653, Длина датасета: 772,Количество классов в датасете:  12,  Тема: Водный транспорт
+Тип датасета: Обычный Датасет: 7, Векторизатор: TF-IDF, F1 Score: 0.676, Длина датасета: 485,Количество классов в датасете:  11,  Тема: Гидрогеология
+Тип датасета: Обычный Датасет: 8, Векторизатор: TF-IDF, F1 Score: 0.746, Длина датасета: 514,Количество классов в датасете:  14,  Тема: Геомагнетизм и высокие слои атмосферы
+Тип датасета: Обычный Датасет: 9, Векторизатор: TF-IDF, F1 Score: 0.785, Длина датасета: 2497,Количество классов в датасете:  19,  Тема: Искусственный интеллект
+Тип датасета: Обычный Датасет: 10, Векторизатор: TF-IDF, F1 Score: 0.642, Длина датасета: 245,Количество классов в датасете:  10,  Тема: Технология химических волокон и нитей
+Тип датасета: Обычный Датасет: 11, Векторизатор: TF-IDF, F1 Score: 0.574, Длина датасета: 148,Количество классов в датасете:  10,  Тема: Промышленный синтез органических красителей и пигментов
+Тип датасета: Обычный Датасет: 12, Векторизатор: TF-IDF, F1 Score: 0.624, Длина датасета: 454,Количество классов в датасете:  11,  Тема: Океанология
+Тип датасета: Обычный Датасет: 13, Векторизатор: TF-IDF, F1 Score: 0.938, Длина датасета: 3151,Количество классов в датасете:  5,  Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Тип датасета: Обычный Датасет: 14, Векторизатор: TF-IDF, F1 Score: 0.684, Длина датасета: 812,Количество классов в датасете:  16,  Тема: Материалы для электроники и радиотехники
+Тип датасета: Обычный Датасет: 15, Векторизатор: TF-IDF, F1 Score: 0.991, Длина датасета: 540,Количество классов в датасете:  2,  Тема: Сельскохозяйственная биология
+Тип датасета: без чисел Датасет: 1, Векторизатор: TF-IDF, F1 Score: 0.779, Длина датасета: 9232,Количество классов в датасете:  23,  Тема: Физиология человека и животных
+Тип датасета: без чисел Датасет: 2, Векторизатор: TF-IDF, F1 Score: 0.678, Длина датасета: 101,Количество классов в датасете:  9,  Тема: Обсерватории. Инструменты, приборы и методы астрономических наблюдений
+Тип датасета: без чисел Датасет: 3, Векторизатор: TF-IDF, F1 Score: 0.881, Длина датасета: 2480,Количество классов в датасете:  10,  Тема: Химическое и нефтяное машиностроение
+Тип датасета: без чисел Датасет: 4, Векторизатор: TF-IDF, F1 Score: 0.680, Длина датасета: 338,Количество классов в датасете:  17,  Тема: Общие вопросы автоматики и вычислительной техники
+Тип датасета: без чисел Датасет: 5, Векторизатор: TF-IDF, F1 Score: 0.653, Длина датасета: 1392,Количество классов в датасете:  18,  Тема: Физика плазмы
+Тип датасета: без чисел Датасет: 6, Векторизатор: TF-IDF, F1 Score: 0.653, Длина датасета: 772,Количество классов в датасете:  12,  Тема: Водный транспорт
+Тип датасета: без чисел Датасет: 7, Векторизатор: TF-IDF, F1 Score: 0.674, Длина датасета: 485,Количество классов в датасете:  11,  Тема: Гидрогеология
+Тип датасета: без чисел Датасет: 8, Векторизатор: TF-IDF, F1 Score: 0.750, Длина датасета: 514,Количество классов в датасете:  14,  Тема: Геомагнетизм и высокие слои атмосферы
+Тип датасета: без чисел Датасет: 9, Векторизатор: TF-IDF, F1 Score: 0.787, Длина датасета: 2497,Количество классов в датасете:  19,  Тема: Искусственный интеллект
+Тип датасета: без чисел Датасет: 10, Векторизатор: TF-IDF, F1 Score: 0.642, Длина датасета: 245,Количество классов в датасете:  10,  Тема: Технология химических волокон и нитей
+Тип датасета: без чисел Датасет: 11, Векторизатор: TF-IDF, F1 Score: 0.574, Длина датасета: 148,Количество классов в датасете:  10,  Тема: Промышленный синтез органических красителей и пигментов
+Тип датасета: без чисел Датасет: 12, Векторизатор: TF-IDF, F1 Score: 0.648, Длина датасета: 454,Количество классов в датасете:  11,  Тема: Океанология
+Тип датасета: без чисел Датасет: 13, Векторизатор: TF-IDF, F1 Score: 0.937, Длина датасета: 3151,Количество классов в датасете:  5,  Тема: Теория и методы изучения и охраны окружающей среды. Экологические основы использования природных ресурсов
+Тип датасета: без чисел Датасет: 14, Векторизатор: TF-IDF, F1 Score: 0.669, Длина датасета: 812,Количество классов в датасете:  16,  Тема: Материалы для электроники и радиотехники
+Тип датасета: без чисел Датасет: 15, Векторизатор: TF-IDF, F1 Score: 0.991, Длина датасета: 540,Количество классов в датасете:  2,  Тема: Сельскохозяйственная биология
+
+Process finished with exit code 0
+

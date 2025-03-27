@@ -1,4 +1,78 @@
 import pandas as pd
+import torch
+
+
+from transformers import T5ForConditionalGeneration, T5Tokenizer
+
+MODEL_NAME = 'cointegrated/rut5-base-paraphraser'
+model = T5ForConditionalGeneration.from_pretrained(MODEL_NAME)
+tokenizer = T5Tokenizer.from_pretrained(MODEL_NAME)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def paraphrase(text, beams=5, grams=4):
+    x = tokenizer(text, return_tensors='pt', padding=True).to(model.device)
+    max_size = int(x.input_ids.shape[1] * 1.5 + 10)
+    out = model.generate(**x, encoder_no_repeat_ngram_size=grams, num_beams=beams, max_length=max_size)
+    return tokenizer.decode(out[0], skip_special_tokens=True)
+
+
+def augment_dataset_with_paraphrases(input_csv, column_name='x', threshold=1500):
+    """
+    Функция для аугментации датасета перефразированными текстами.
+
+    Параметры:
+    - input_csv: путь к входному CSV файлу
+    - column_name: название колонки с текстом для перефразирования (по умолчанию 'x')
+    - threshold: порог количества уникальных значений (по умолчанию 1500)
+
+    Возвращает:
+    - Расширенный DataFrame с добавленными перефразированными текстами
+    """
+
+    # Загрузка данных
+    df = pd.read_csv(input_csv)
+
+    # Получение уникальных значений и их количества
+    value_counts = df[column_name].value_counts()
+
+    # Создаем список для новых строк
+    new_rows = []
+
+    # Перебираем уникальные значения, которые встречаются реже threshold
+    for value, count in value_counts.items():
+        if count < threshold:
+            # Находим все строки с этим значением
+            mask = df[column_name] == value
+            original_rows = df[mask]
+
+            # Для каждой оригинальной строки создаем перефразированную версию
+            for _, row in original_rows.iterrows():
+                try:
+                    # Перефразируем текст
+                    paraphrased_text = paraphrase(row[column_name])
+
+                    # Создаем новую строку с перефразированным текстом
+                    new_row = row.copy()
+                    new_row[column_name] = paraphrased_text
+
+                    # Добавляем в список новых строк
+                    new_rows.append(new_row)
+                except Exception as e:
+                    print(f"Ошибка при перефразировании текста: {row[column_name]}")
+                    print(f"Ошибка: {e}")
+                    continue
+
+    # Если есть новые строки, добавляем их к исходному датасету
+    if new_rows:
+        new_df = pd.DataFrame(new_rows)
+        augmented_df = pd.concat([df, new_df], ignore_index=True)
+    else:
+        augmented_df = df.copy()
+
+    return augmented_df
+
+import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 import pymorphy3
@@ -215,3 +289,4 @@ class TextPreprocessor:
     def return_dataset(self):
         return self.df
 
+preproce

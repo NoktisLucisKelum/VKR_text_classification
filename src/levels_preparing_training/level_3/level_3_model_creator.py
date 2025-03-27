@@ -131,6 +131,16 @@ for i in list_of_unique:
             count_passed_one_label += 1
             print(f"Название темы: {model_name}, Код темы: {i}, Состоит из {len(df_cut["RGNTI3"].unique().tolist())} "
                   f"класса, и имеет размер {len_of_sample}")
+            data_tos_save = data_tos_save._append({
+                "Index_name": i,
+                "Name": model_name,
+                "f1_weighted": 0,
+                "f1_micro": 0,
+                "f1_macro": 0,
+                "length": len(df_cut),
+                "unique_label": 1
+            }, ignore_index=True)
+            data_tos_save.to_excel("Results_level_3.xlsx")
         elif len_of_sample < 10:
             count_passed_small += 1
             print(f"Название темы: {model_name}, Код темы: {i}, Состоит из {len(df_cut["RGNTI3"].unique().tolist())} "

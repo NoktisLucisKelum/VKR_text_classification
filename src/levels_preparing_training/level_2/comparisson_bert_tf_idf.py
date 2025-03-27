@@ -6,26 +6,34 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 import numpy as np
-from time import time
+
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from equal_df import select_100_per_group
-import json
+
+from sklearn.pipeline import Pipeline
+import joblib
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import f1_score
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import LinearSVC
+
+pipeline_0 = Pipeline([
+    ('tfidf', TfidfVectorizer(max_df=0.5, ngram_range=(1, 1), use_idf=True)),
+    ('svc', LinearSVC(C=0.65, class_weight='balanced', fit_intercept=False, loss='squared_hinge', max_iter=4000,
+                      penalty='l2', tol=0.0001))
+])
 
 df = pd.read_csv(
-    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_1_level/train_refactored_lematize_no_numbers_1_level_cut.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_no_numbers_2_3_level.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 
-df = select_100_per_group(df, "RGNTI1")
-unique_labels = sorted(df['RGNTI1'].unique().tolist())
+df = df[df["RGNTI2"] == "45.29"]
+print(len(df))
+unique_labels = sorted(df['RGNTI3'].unique().tolist())
+print(unique_labels)
 label2id = {label: i for i, label in enumerate(unique_labels)}
 id2label = {i: label for label, i in label2id.items()}
 
-with open('id2label.json', 'w', encoding='utf-8') as f:
-    json.dump(id2label, f, ensure_ascii=False, indent=2)
-
-print(id2label)
-
-df['label_id'] = df['RGNTI1'].apply(lambda x: label2id[x])
+df['label_id'] = df['RGNTI3'].apply(lambda x: label2id[x])
 
 # ----------------------------------------------------------------------------
 print("3. Разделение на train / val / test")
@@ -42,7 +50,7 @@ train_df, val_df = train_test_split(
 # 3. Класс датасета (PyTorch)
 # ----------------------------
 class TextDataset(Dataset):
-    def __init__(self, texts, labels, tokenizer, max_len=128):
+    def __init__(self, texts, labels, tokenizer, max_len=2000):
         self.texts = texts
         self.labels = labels
         self.tokenizer = tokenizer
@@ -63,7 +71,8 @@ class TextDataset(Dataset):
             max_length=self.max_len,
             return_tensors='pt'
         )
-
+        # encoding['input_ids'] -> тензор размерности [1, max_len]
+        # нам удобно вернуть "сплющенные" тензоры [max_len], поэтому возьмём .squeeze()
         item = {key: val.squeeze() for key, val in encoding.items()}
         item['labels'] = torch.tensor(label, dtype=torch.long)
 
@@ -74,7 +83,7 @@ class TextDataset(Dataset):
 print("4. Создаем датасеты и DataLoader-ы")
 # ----------------------------
 
-model_name = "ai-forever/ruRoberta-large"
+model_name = "sergeyzh/rubert-tiny-turbo"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 train_dataset = TextDataset(
@@ -93,7 +102,7 @@ val_dataset = TextDataset(
 #                            tokenizer=tokenizer
 #                            )
 
-batch_size = 16
+batch_size = 12
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 # test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
@@ -106,18 +115,18 @@ model = AutoModelForSequenceClassification.from_pretrained(
     num_labels=len(unique_labels)  # важно указать, сколько у нас классов
 )
 
-
+# Перенесём на GPU при возможности
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
-
-optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
+# Определим оптимизатор и функцию потерь
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
 loss_fn = nn.CrossEntropyLoss()
 
 
 print("6. Цикл обучения")
 
-epochs = 2  # Для примера
+epochs = 3  # Для примера
 
 for epoch in range(epochs):
     print(f"\n=== Epoch {epoch + 1}/{epochs} ===")
@@ -128,7 +137,6 @@ for epoch in range(epochs):
 
     for step, batch in enumerate(train_loader):
         # Получаем входные данные
-        now = time()
         input_ids = batch['input_ids'].to(device)
         attention_mask = batch['attention_mask'].to(device)
         labels = batch['labels'].to(device)
@@ -157,9 +165,10 @@ for epoch in range(epochs):
         f1_weighted = f1_score(gold, preds, average='weighted')
         f1_macro = f1_score(gold, preds, average='macro')
         f1_micro = f1_score(gold, preds, average='micro')
-        # if step % 30 == 4:# Выведем статистику
+
+        # Выведем статистику
         print(f"Batch {step + 1}/{len(train_loader)}, Loss: {loss.item():.4f}, F1 (weighted): {f1_weighted:.4f}, "
-          f"F1 (macro): {f1_macro:.4f}, F1 (micro): {f1_micro:.4f}, time: {time() - now}")
+              f"F1 (macro): {f1_macro:.4f}, F1 (micro): {f1_micro:.4f}")
 
     # ---- Валидация на val_loader в конце эпохи (по желанию) ----
     model.eval()
@@ -190,53 +199,61 @@ for epoch in range(epochs):
     print(f"Validation F1 (weighted): {val_f1_weighted:.4f}, Validation F1 (macro): {val_f1_macro:.4f},"
           f" Validation F1 (micro): {val_f1_micro:.4f}")
 
-# ----------------------------
-print("7. Сохранение модели")
-# ----------------------------
+X_train, X_test, y_train, y_test = train_test_split(df['body'], df['RGNTI3'], test_size=0.2, random_state=42)
+pipeline = pipeline_0
+pipeline.fit(X_train, y_train)
+y_pred = pipeline.predict(X_test)
+f1_weighted = f1_score(y_test, y_pred, average="weighted")
+f1_macro = f1_score(y_test, y_pred, average="macro")
+f1_micro = f1_score(y_test, y_pred, average="micro")
+print(f"TF-IDF: f1_weighted: {f1_weighted}, f1_macro: {f1_macro}, f1_micro: {f1_micro}")
 
-save_path = "tiny_turbo_level_1"
-model.save_pretrained(save_path)
-tokenizer.save_pretrained(save_path)
-
-# ----------------------------
-print("8. Загрузка модели и пример предсказания")
-# ----------------------------
-loaded_tokenizer = AutoTokenizer.from_pretrained(save_path)
-loaded_model = AutoModelForSequenceClassification.from_pretrained(save_path)
-loaded_model.to(device)
-loaded_model.eval()
-
-
-def predict_class(text):
-    """Функция предсказания класса на одном примере текста"""
-    inputs = loaded_tokenizer(
-        text,
-        padding='max_length',
-        truncation=True,
-        max_length=512,
-        return_tensors='pt'
-    )
-    inputs = {k: v.to(device) for k, v in inputs.items()}
-
-    with torch.no_grad():
-        outputs = loaded_model(**inputs)
-        logits = outputs.logits
-        # Применим softmax, чтобы получить вероятности
-        probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
-        pred_label_id = np.argmax(probs)
-        pred_label = id2label[pred_label_id]
-        confidence = probs[pred_label_id]
-    return pred_label, confidence
-
-    # Протестируем на некотором тексте
+# # ----------------------------
+# print("7. Сохранение модели")
+# # ----------------------------
+# # Сохраним модель и токенайзер в папку rubert_tiny2_model
+# save_path = "rubert_tiny2_model"
+# model.save_pretrained(save_path)
+# tokenizer.save_pretrained(save_path)
+#
+# # ----------------------------
+# print("8. Загрузка модели и пример предсказания")
+# # ----------------------------
+# loaded_tokenizer = AutoTokenizer.from_pretrained(save_path)
+# loaded_model = AutoModelForSequenceClassification.from_pretrained(save_path)
+# loaded_model.to(device)
+# loaded_model.eval()
 
 
-test_text = ("Влияние изменения параметров электрической сети с гибкими линиями электропередачи и асинхронными "
-             "генераторами двойного питания на статическую устойчивость	Рассматривается эффективность ВЭС и СЭС в "
-             "условиях истощения запасов традиционных видов топлива. В связи с значительным увеличением числа ВЭС "
-             "важным является обеспечение устойчивости связанных с сетью асинхронных генераторов двойного питания, "
-             "находящихся на валу ветротурбины.")
-pred_label, conf = predict_class(test_text)
-print(f"Текст: {test_text}")
-print(f"Предсказанный класс: {pred_label}, вероятность: {conf:.4f}")
+# def predict_class(text):
+#     """Функция предсказания класса на одном примере текста"""
+#     inputs = loaded_tokenizer(
+#         text,
+#         padding='max_length',
+#         truncation=True,
+#         max_length=1500,
+#         return_tensors='pt'
+#     )
+#     inputs = {k: v.to(device) for k, v in inputs.items()}
+#
+#     with torch.no_grad():
+#         outputs = loaded_model(**inputs)
+#         logits = outputs.logits
+#         # Применим softmax, чтобы получить вероятности
+#         probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
+#         pred_label_id = np.argmax(probs)
+#         pred_label = id2label[pred_label_id]
+#         confidence = probs[pred_label_id]
+#     return pred_label, confidence
+#
+#     # Протестируем на некотором тексте
 
+
+# test_text = ("Влияние изменения параметров электрической сети с гибкими линиями электропередачи и асинхронными "
+#              "генераторами двойного питания на статическую устойчивость	Рассматривается эффективность ВЭС и СЭС в "
+#              "условиях истощения запасов традиционных видов топлива. В связи с значительным увеличением числа ВЭС "
+#              "важным является обеспечение устойчивости связанных с сетью асинхронных генераторов двойного питания, "
+#              "находящихся на валу ветротурбины.")
+# pred_label, conf = predict_class(test_text)
+# print(f"Текст: {test_text}")
+# print(f"Предсказанный класс: {pred_label}, вероятность: {conf:.4f}")

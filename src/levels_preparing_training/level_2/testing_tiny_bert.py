@@ -10,7 +10,7 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 df = pd.read_csv(
-    "/datasets/datasets_final/for_1_level/train_refactored_lematize_cut_final.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/test_refactored_lematize_2_3_level.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 
 df = df[df["RGNTI1"] == "44"]
@@ -209,7 +209,7 @@ def predict_class(text):
         text,
         padding='max_length',
         truncation=True,
-        max_length=512,
+        max_length=1500,
         return_tensors='pt'
     )
     inputs = {k: v.to(device) for k, v in inputs.items()}

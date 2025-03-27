@@ -23,7 +23,6 @@ id2label = {i: label for label, i in label2id.items()}
 with open('id2label.json', 'w', encoding='utf-8') as f:
     json.dump(id2label, f, ensure_ascii=False, indent=2)
 
-print(id2label)
 
 df['label_id'] = df['RGNTI1'].apply(lambda x: label2id[x])
 
@@ -42,7 +41,7 @@ train_df, val_df = train_test_split(
 # 3. Класс датасета (PyTorch)
 # ----------------------------
 class TextDataset(Dataset):
-    def __init__(self, texts, labels, tokenizer, max_len=128):
+    def __init__(self, texts, labels, tokenizer, max_len=230):
         self.texts = texts
         self.labels = labels
         self.tokenizer = tokenizer
@@ -74,7 +73,7 @@ class TextDataset(Dataset):
 print("4. Создаем датасеты и DataLoader-ы")
 # ----------------------------
 
-model_name = "ai-forever/ruRoberta-large"
+model_name = "ai-forever/ruElectra-medium"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 train_dataset = TextDataset(
@@ -194,7 +193,7 @@ for epoch in range(epochs):
 print("7. Сохранение модели")
 # ----------------------------
 
-save_path = "tiny_turbo_level_1"
+save_path = "ai-forever_ruElectra-medium"
 model.save_pretrained(save_path)
 tokenizer.save_pretrained(save_path)
 

@@ -8,16 +8,16 @@ class DataAnalyzer:
         self.df = df
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased') # Инициализируем токенайзер здесь
 
-    def plot_bar_chart_frequency(self, column_name: str, name_of_plot: str) -> None:
+    def plot_bar_chart_frequency(self, column_name: str) -> None:
         """Подсчитываем встречаемость каждого числа"""
         value_counts = self.df[column_name].value_counts()
 
         plt.figure(figsize=(10, 6))
         plt.bar(value_counts.index.astype(str), value_counts.values)
 
-        plt.xlabel(column_name) # Используем имя столбца для метки оси X
-        plt.ylabel('Частота встречаемости')
-        plt.title('Частота встречаемости статей с данной тематикой. ' + name_of_plot)
+        plt.xlabel("SRSTI1") # Используем имя столбца для метки оси X
+        plt.ylabel('Frequency')
+        plt.title('Frequency of articles types')
 
         plt.show()
         
@@ -39,6 +39,7 @@ class DataAnalyzer:
 
     def analyze_tokens(self, dataset_name: str):
         """Анализирует длину токенизированных текстов."""
+        print(dataset_name)
 
         def get_tokenized_length(text):
             """Токенизирует текст и возвращает его длину."""
@@ -49,9 +50,9 @@ class DataAnalyzer:
 
         plt.figure(figsize=(10, 6))
         plt.hist(self.df['tokenized_length'], bins=50, color='blue', alpha=0.7)
-        plt.title(f'Distribution of Tokenized Text Lengths in {dataset_name}')
-        plt.xlabel('Tokenized Length')
-        plt.ylabel('Frequency')
+        plt.title(f'Распределение токенов в тренировчоном датасете')
+        plt.xlabel('Длина токенов')
+        plt.ylabel('Количество')
         plt.show()
 
         percentile_95 = self.df['tokenized_length'].quantile(0.95)
@@ -95,16 +96,16 @@ class DataAnalyzer:
         plt.show()
 
 
-df = pd.read_csv(
-    '/datasets/datasets_final/for_1_level/test_refactored_lematize_cut_final.csv')
+# df = pd.read_csv(
+#     '/datasets/datasets_final/for_1_level/test_refactored_lematize_cut_final.csv')
 df_2 = pd.read_csv(
-    '/datasets/datasets_final/for_1_level/train_refactored_lematize_cut_final.csv')
+    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_no_numbers_2_3_level.csv')
 statisticer = DataAnalyzer(df_2)
-# analyze_tokens(df_2, "Train dataset")
+# statisticer.analyze_tokens("Train dataset")
 # analyze_tokens(df, "Test dataset")
 # statisticer.word_counting("Train dataset")
 # word_counting(df, "Test dataset")
-statisticer.analis_labels("RGNTI2", "RGNTI3")
-statisticer.analis_len_labels("RGNTI2", "RGNTI3")
-statisticer.pict_label_analys("RGNTI2", "RGNTI3")
-# plot_bar_chart_frequency(df, "RGNTI1", "Тестовый набор")
+# statisticer.analis_labels("RGNTI2", "RGNTI3")
+# statisticer.analis_len_labels("RGNTI2", "RGNTI3")
+# statisticer.pict_label_analys("RGNTI2", "RGNTI3")
+statisticer.plot_bar_chart_frequency("RGNTI1")

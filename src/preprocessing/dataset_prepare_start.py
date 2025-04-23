@@ -1,7 +1,7 @@
 from dataset_prepare_for_training import *
 
 
-df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datatsets_from_git/test/test_ru_work.csv",
+df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_colide/train_work_big.csv",
                  sep="\t", on_bad_lines='skip')
 
 print(df.columns)

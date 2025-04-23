@@ -1,19 +1,17 @@
-import os
-import string
 import json
 
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-
+from torch.nn.utils import clip_grad_norm_
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AdamW
 
 df = pd.read_csv(
-    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_2_3_level.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_no_numbers_2_3_level.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 old_unique_labels = df["RGNTI1"].unique().tolist()
 print(old_unique_labels)
@@ -70,7 +68,7 @@ for i in old_unique_labels:
 
 
     class TextDataset(Dataset):
-        def __init__(self, texts, labels, tokenizer, max_len=128):
+        def __init__(self, texts, labels, tokenizer, max_len=200):
             self.texts = texts
             self.labels = labels
             self.tokenizer = tokenizer
@@ -103,7 +101,7 @@ for i in old_unique_labels:
     print("2. Создаем датасеты и DataLoader-ы")
     # ----------------------------
 
-    model_name = "cointegrated/rubert-tiny2"
+    model_name = "sergeyzh/rubert-tiny-turbo"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     train_dataset = TextDataset(
@@ -145,7 +143,8 @@ for i in old_unique_labels:
 
     print("4. Цикл обучения")
 
-    epochs = 1  # Для примера
+    epochs = 2  # Для примера
+    max_grad_norm = 1.0
 
     for epoch in range(epochs):
         print(f"\n=== Epoch {epoch + 1}/{epochs} ===")
@@ -168,9 +167,9 @@ for i in old_unique_labels:
                 labels=labels
             )
 
-            loss = outputs.loss
-            logits = outputs.logits
 
+            logits = outputs.logits
+            loss = loss_fn(logits, labels)
             # Обратный проход
             loss.backward()
             optimizer.step()

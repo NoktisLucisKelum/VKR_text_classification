@@ -7,7 +7,7 @@ tokenizer = T5Tokenizer.from_pretrained(MODEL_NAME)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def paraphrase(text, beams=5, grams=4):
+def paraphrase(text, beams=9, grams=3):
     x = tokenizer(text, return_tensors='pt', padding=True).to(model.device)
     max_size = int(x.input_ids.shape[1] * 1.5 + 10)
     out = model.generate(**x, encoder_no_repeat_ngram_size=grams, num_beams=beams, max_length=max_size)

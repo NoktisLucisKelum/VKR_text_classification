@@ -273,3 +273,66 @@ print(f"Пропущено - маленькая выборка: {count_passed_sm
 print(f"Пропущено - один класс: {count_passed_one_label} ")
 print(f"Аномальное f1: {count_high_f1}")
 print(f"Нуждается в аугментации: {count_need_augmentation}")
+
+import os
+import subprocess
+import time
+import pandas as pd
+
+def list_files_and_execute_commands(directory="graphml_openabcd"):
+    columns = ["Model", "opt_type", "timing", "num_elements", "percent", "prim_inp", "prim_outp", "gates"]
+    df = pd.DataFrame(columns=columns)
+    try:
+        files = os.listdir(directory)
+        print(len(files))
+        for file in files:
+            print(file)
+    except FileNotFoundError:
+        print(f"Error!")
+        return
+    process = subprocess.Popen(
+        "./utopia.sh",
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        bufsize=1,
+        universal_newlines=True
+    )
+    time.sleep(2)
+    opt = ["rw", "rf", "rs"]
+    for file in files:
+        for op in opt:
+            commands = [f"read_graphml --schema 1 graphml_openabcd/{file}", f"logopt {op}", "delete_design"]
+            for cmd in commands:
+                print(f"\n Execute command: {cmd}")
+                process.stdin.write(cmd + "\n")
+                process.stdin.flush()
+                time.sleep(2)
+                output = []
+                while True:
+                    line = process.stdout.readline()
+                    if "[returned 0]" in line:
+                        break
+                    output.append(line.strip())
+
+                    print(line.strip())
+                    if "Primary inputs:" in line.strip():
+                        inputs = line.strip().rpartition(" ")
+                    if "Primary outputs: " in line.strip():
+                        outputs = line.strip().rpartition(" ")
+                    if "Logical gates:" in line.strip():
+                        log_gates = line.strip().rpartition(" ")
+                    if f"- {op}" in line.strip():
+                        start_timin = int(line.strip().find(": ")+2)
+                        end_timin = int(line.strip().rfind("s"))
+                        print(start_timin, end_timin)
+                        timin = line.strip()[start_timin: end_timin]
+                        elements = line.strip()[line.strip().find("-> -")+4: line.strip().rfind("[")]
+                        procent  = line.strip()[line.strip().find("[")+1: line.strip().rfind("%")]
+                        df = df._append({"Model": file, "opt_type": op, "timing": timin, "num_elements": elements, "percent": procent, "prim_inp": inputs, "prim_outp": outputs, "gates": log_gates}, ignore_index=True)
+                        df.to_excel("results_1.xlsx")
+    process.stdin.close()
+    process.terminate()
+
+list_files_and_execute_commands()

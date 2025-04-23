@@ -1,7 +1,6 @@
-import pandas as pd
 import torch
-
-
+import pandas as pd
+from time import time
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
 MODEL_NAME = 'cointegrated/rut5-base-paraphraser'
@@ -10,69 +9,70 @@ tokenizer = T5Tokenizer.from_pretrained(MODEL_NAME)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def paraphrase(text, beams=5, grams=4):
+def paraphrase(text, beams=9, grams=3):
     x = tokenizer(text, return_tensors='pt', padding=True).to(model.device)
     max_size = int(x.input_ids.shape[1] * 1.5 + 10)
     out = model.generate(**x, encoder_no_repeat_ngram_size=grams, num_beams=beams, max_length=max_size)
     return tokenizer.decode(out[0], skip_special_tokens=True)
 
 
-def augment_dataset_with_paraphrases(input_csv, column_name='x', threshold=1500):
+def augment_with_paraphrases(dataset: pd.DataFrame, target_values: list, check_column: str = "RGNTI1",
+                             text_column: str = "body") -> pd.DataFrame:
+    print(f"Изначальный датасет: {len(dataset)}")
     """
-    Функция для аугментации датасета перефразированными текстами.
+    Аугментирует датасет перефразированными текстами для строк с указанными значениями в целевой колонке.
 
     Параметры:
-    - input_csv: путь к входному CSV файлу
-    - column_name: название колонки с текстом для перефразирования (по умолчанию 'x')
-    - threshold: порог количества уникальных значений (по умолчанию 1500)
+    - dataset: исходный DataFrame
+    - target_values: список значений в колонке check_column, для которых нужно делать аугментацию
+    - check_column: название колонки для проверки значений (по умолчанию "RGNTI1")
+    - text_column: название колонки с текстом для перефразирования (по умолчанию "body")
+    - paraphrase_func: функция для перефразирования текста (должна принимать строку и возвращать строку)
 
     Возвращает:
-    - Расширенный DataFrame с добавленными перефразированными текстами
+    - Новый DataFrame с добавленными перефразированными строками
     """
 
-    # Загрузка данных
-    df = pd.read_csv(input_csv)
 
-    # Получение уникальных значений и их количества
-    value_counts = df[column_name].value_counts()
-
-    # Создаем список для новых строк
+    # Создаем копию датасета, чтобы не изменять исходный
+    result_df = dataset.copy()
     new_rows = []
 
-    # Перебираем уникальные значения, которые встречаются реже threshold
-    for value, count in value_counts.items():
-        if count < threshold:
-            # Находим все строки с этим значением
-            mask = df[column_name] == value
-            original_rows = df[mask]
+    # Находим строки, где значение RGNTI1 входит в target_values
+    mask = dataset[check_column].isin(target_values)
+    target_rows = dataset[mask]
+    cnt = 0
 
-            # Для каждой оригинальной строки создаем перефразированную версию
-            for _, row in original_rows.iterrows():
-                try:
-                    # Перефразируем текст
-                    paraphrased_text = paraphrase(row[column_name])
+    # Проходим по всем подходящим строкам
+    for _, row in target_rows.iterrows():
+        cnt += 1
+        try:
+            paraphrased_text = paraphrase(row[text_column])
+            if cnt % 75 == 4:
+                now = time()
+                print(f"Изначальный текст: {row[text_column]}")
+                print(f"Перефразированный текст: {paraphrased_text}")
+                print(time() - now)
 
-                    # Создаем новую строку с перефразированным текстом
-                    new_row = row.copy()
-                    new_row[column_name] = paraphrased_text
+            # Создаем новую строку с перефразированным текстом
+            new_row = row.copy()
+            new_row[text_column] = paraphrased_text
+            new_rows.append(new_row)
 
-                    # Добавляем в список новых строк
-                    new_rows.append(new_row)
-                except Exception as e:
-                    print(f"Ошибка при перефразировании текста: {row[column_name]}")
-                    print(f"Ошибка: {e}")
-                    continue
+        except Exception as e:
+            print(f"Ошибка при перефразировании текста: {row[text_column]}")
+            print(f"Ошибка: {e}")
+            continue
 
-    # Если есть новые строки, добавляем их к исходному датасету
+    # Если есть новые строки, добавляем их к результату
     if new_rows:
-        new_df = pd.DataFrame(new_rows)
-        augmented_df = pd.concat([df, new_df], ignore_index=True)
-    else:
-        augmented_df = df.copy()
+        new_rows_df = pd.DataFrame(new_rows)
+        result_df = pd.concat([result_df, new_rows_df], ignore_index=True)
+    print(f"Конечный датасет: {len(result_df)}")
 
-    return augmented_df
+    return result_df
 
-import pandas as pd
+
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 import pymorphy3
@@ -289,4 +289,61 @@ class TextPreprocessor:
     def return_dataset(self):
         return self.df
 
-preproce
+
+# df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datatsets_from_git/train/train_ru_work.csv",
+#                  sep="\t", on_bad_lines='skip').head(170)
+# dfx = pd.read_csv("numbers.csv")
+# print(dfx['keywords'])
+df_new = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_1_level/train_refactored_lematize_no_numbers.csv")
+print(df_new.columns)
+print(df_new["body"].head())
+print(df_new["RGNTI1"].value_counts())
+# preprocessor = TextPreprocessor(df)
+#
+# # Последовательно применяем функции
+# preprocessor.drop_nan()
+# print(1)
+# preprocessor.split_column_value("RGNTI1", "RGNTI1_2")
+# print(7)
+# preprocessor.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
+# print(8)
+# print(len(df["RGNTI1"].value_counts()))
+# print(2)
+# preprocessor.remove_english_strings()
+# s = preprocessor.return_dataset()
+#
+#
+# # print(s, type(s))
+# print(s["RGNTI1"].value_counts())
+# new_df = augment_with_paraphrases(s, ["60", "64", "66", "19", "62", "67", "75", "12", "69"])
+# preprocessor_new = TextPreprocessor(new_df)
+# print(len(new_df["RGNTI1"].value_counts()))
+# preprocessor_new.chem_formula_prepare()
+# preprocessor_new.phys_formula_prepare()
+# print(3)
+# preprocessor_new.remove_numbers()
+# print(3.5)
+# preprocessor_new.lemmatize(['title', 'body', 'keywords'])
+# print(4)
+# preprocessor_new.remove_punctuation(['title', 'body'])
+# print(5)
+# # # preprocessor.stem(['text_column'])
+# preprocessor_new.remove_stop_words(['title', 'body'])
+# print(6)
+# preprocessor_new.merge_and_drop_columns('body', 'title')
+# print(10)
+# # preprocessor.printing('body')
+# # preprocessor.printing('keywords')
+# preprocessor_new.repare_columns()
+# preprocessor_new.drop_columns(["correct"])
+# preprocessor_new.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
+# preprocessor_new.save_to_csv("train_full_uncut_final.csv")
+#
+#
+# sx = preprocessor_new.return_dataset()
+# print(type(sx), len(sx))
+# print(sx.columns)
+#
+# #
+# # df = pd.read_csv("_numbers.csv")
+# # print(df.columns)

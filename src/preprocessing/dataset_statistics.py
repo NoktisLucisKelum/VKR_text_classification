@@ -1,12 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from transformers import BertTokenizer
+from transformers import AutoTokenizer
 
 
 class DataAnalyzer:
     def __init__(self, df):
         self.df = df
-        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased') # Инициализируем токенайзер здесь
+        self.tokenizer = AutoTokenizer.from_pretrained('sergeyzh/rubert-tiny-turbo')
 
     def plot_bar_chart_frequency(self, column_name: str) -> None:
         """Подсчитываем встречаемость каждого числа"""
@@ -15,9 +15,9 @@ class DataAnalyzer:
         plt.figure(figsize=(10, 6))
         plt.bar(value_counts.index.astype(str), value_counts.values)
 
-        plt.xlabel("SRSTI1") # Используем имя столбца для метки оси X
-        plt.ylabel('Frequency')
-        plt.title('Frequency of articles types')
+        plt.xlabel("RGNTI1") # Используем имя столбца для метки оси X
+        plt.ylabel('Частота')
+        plt.title('Частота встречаемости в тестовом наборе, уровень 1')
 
         plt.show()
         
@@ -50,7 +50,7 @@ class DataAnalyzer:
 
         plt.figure(figsize=(10, 6))
         plt.hist(self.df['tokenized_length'], bins=50, color='blue', alpha=0.7)
-        plt.title(f'Распределение токенов в тренировчоном датасете')
+        plt.title(f'Распределение токенов в тренировчоном датасете, rubert-tiny-turbo')
         plt.xlabel('Длина токенов')
         plt.ylabel('Количество')
         plt.show()
@@ -99,9 +99,9 @@ class DataAnalyzer:
 # df = pd.read_csv(
 #     '/datasets/datasets_final/for_1_level/test_refactored_lematize_cut_final.csv')
 df_2 = pd.read_csv(
-    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_no_numbers_2_3_level.csv')
+    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_colide/train_colide.csv')
 statisticer = DataAnalyzer(df_2)
-# statisticer.analyze_tokens("Train dataset")
+statisticer.analyze_tokens("Тренировочный датасет")
 # analyze_tokens(df, "Test dataset")
 # statisticer.word_counting("Train dataset")
 # word_counting(df, "Test dataset")

@@ -75,7 +75,7 @@ def limit_unique_values(df: pandas.DataFrame, column_name: str, n=200) -> pd.Dat
     return result_df
 
 
-def limit_unique_values_tail(df: pandas.DataFrame, column_name: str, n=40) -> pd.DataFrame:
+def limit_unique_values_tail(df: pandas.DataFrame, column_name: str, n=30) -> pd.DataFrame:
     """Обрезает все классы в RGNTI_1 до n с конца"""
     result_df = pd.DataFrame()
 
@@ -86,6 +86,15 @@ def limit_unique_values_tail(df: pandas.DataFrame, column_name: str, n=40) -> pd
         result_df = pd.concat([result_df, subset])
 
     return result_df
+
+
+def filter_by_column(df, output_file, column_name, threshold=30):
+    value_counts = df[column_name].value_counts()
+    common_values = value_counts[value_counts >= threshold].index
+    filtered_df = df[df[column_name].isin(common_values)]
+
+    filtered_df.to_csv(output_file, index=False)
+    print(f"Размер после фильтрации по столбцу '{column_name}': {len(filtered_df)} строк")
 
 
 # df_null = limit_unique_values_tail(pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final'
@@ -125,14 +134,17 @@ def limit_unique_values_tail(df: pandas.DataFrame, column_name: str, n=40) -> pd
 # preprocessor_1.save_dataset('test_refactored_lematize_no_numbers_2_3_level.csv')
 
 
-df_new = pd.read_csv('/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_colide/train_big_augmented_uncut_final.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
+df_new = pd.read_csv('train_big_augmented_uncut_final.csv', dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 # print(df["RGNTI1"].dtype)
 # print(df[df['RGNTI1'] == '58'])
 preprocessor = DataFrameProcessor(df_new)
-preprocessor.unique_counts_level_1()
+# preprocessor.unique_counts_level_1()
 preprocessor.delete_strings(['69', '12', '75', '67', '62', '19'])
-# preprocessor.limit_unique_rows("RGNTI1", "34", 28000)
-preprocessor.unique_counts_level_1()
+# preprocessor.limit_unique_rows("RGNTI1", "34", 46000)
+# preprocessor.unique_counts_level_1()
 preprocessor.pad_single_char_values('RGNTI1')
 preprocessor.pad_single_char_values_reverse('RGNTI2')
-preprocessor.save_dataset('train_big_augmented_uncut_preprocessed_final.csv')
+# preprocessor.save_dataset('train_big_augmented_uncut_preprocessed_final_level_1.csv')
+s = preprocessor.return_dataset()
+filter_by_column(s, "train_big_augmented_uncut_preprocessed_final_level_2_3.csv", "RGNTI2")
+

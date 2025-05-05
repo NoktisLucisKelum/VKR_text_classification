@@ -3,15 +3,16 @@ import json
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from torch.nn.utils import clip_grad_norm_
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
+import torch.nn.functional as F
 
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, AdamW
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 df = pd.read_csv(
-    "/Users/denismazepa/Desktop/Py_projects/VKR/src/preprocessing/train_big_augmented_uncut_preprocessed_final_level_2_3.csv",
+    "/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_other_levels/train_refactored_lematize_no_numbers_2_3_level.csv",
     dtype={'RGNTI1': str, 'RGNTI2': str, 'RGNTI3': str})
 old_unique_labels = df["RGNTI1"].unique().tolist()
 print(old_unique_labels)
@@ -22,29 +23,58 @@ data = pd.DataFrame(columns=columns)
 with open("/Users/denismazepa/Desktop/Py_projects/VKR/grnti/GRNTI_1_ru.json", 'r', encoding='utf-8') as f:
     json_data = json.load(f)
 
-# true_models_df = pd.read_excel("/Users/denismazepa/Desktop/Py_projects/VKR/src/levels_preparing_training/level_3/Results_level_3.xlsx",
-#                                dtype={'Index_name': str})
-#
-# list_of_grnti_indexes = true_models_df["Index_name"].unique().tolist()
-#
-# print(list_of_grnti_indexes)
+true_models_df = pd.read_excel("/Users/denismazepa/Desktop/Py_projects/VKR/src/levels_preparing_training/level_3/Results_level_3.xlsx",
+                               dtype={'Index_name': str})
+
+list_of_grnti_indexes = true_models_df["Index_name"].unique().tolist()
+
+
+class MulticlassDiceLoss(nn.Module):
+    """
+    logits:  (B, C)
+    target:  (B,)   – метка класса (LongTensor)
+    """
+    def __init__(self, smooth: float = 1e-5, from_logits: bool = True):
+        super().__init__()
+        self.smooth = smooth
+        self.from_logits = from_logits
+
+    def forward(self, logits: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+        if self.from_logits:                       # (B, C) ──softmax──> (B, C)
+            probs = torch.softmax(logits, dim=1)
+        else:
+            probs = logits                        # уже вероятности
+
+        # One‑hot представление таргета
+        target_one_hot = torch.zeros_like(probs)   # (B, C)
+        target_one_hot.scatter_(1, target.unsqueeze(1), 1)
+
+        # Dice = 2 * TP / (2 * TP + FP + FN)
+        intersection = (probs * target_one_hot).sum(dim=0)   # (C,)
+        cardinality  = (probs + target_one_hot).sum(dim=0)   # (C,)
+        dice_per_cls = (2. * intersection + self.smooth) / (cardinality + self.smooth)
+        loss = 1. - dice_per_cls.mean()
+
+        return loss
+
+print(list_of_grnti_indexes)
 for i in old_unique_labels:
     new_df = df[df["RGNTI1"] == i]
 
     # ----------------------------------------------------------------------------
     print("1. Разделение на train / val / test")
     print(i, type(i))
-    # new_df = new_df[new_df["RGNTI2"].isin(list_of_grnti_indexes)]
+    new_df = new_df[new_df["RGNTI2"].isin(list_of_grnti_indexes)]
     unique_labels = sorted(new_df['RGNTI2'].unique().tolist())
     print(unique_labels)
-    # if i == '75':
-    #     print(f"{i}: точное попадание. Итоговый класс: 75.31.19")
-    #     continue
+    if i == '75':
+        print(f"{i}: точное попадание. Итоговый класс: 75.31.19")
+        continue
     # ----------------------------------------------------------------------------
     # train_df, test_df = train_test_split(
     #     df, test_size=0.15, random_state=42, stratify=df['label_id']
     # )
-    # print(unique_labels)
+    print(unique_labels)
     if len(unique_labels) == 1:
         data = data._append({
             "Index_name": i,
@@ -68,7 +98,7 @@ for i in old_unique_labels:
 
 
     class TextDataset(Dataset):
-        def __init__(self, texts, labels, tokenizer, max_len=100):
+        def __init__(self, texts, labels, tokenizer, max_len=200):
             self.texts = texts
             self.labels = labels
             self.tokenizer = tokenizer
@@ -120,7 +150,7 @@ for i in old_unique_labels:
     #                            tokenizer=tokenizer
     #                            )
 
-    batch_size = 8
+    batch_size = 16
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     # test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
@@ -139,12 +169,11 @@ for i in old_unique_labels:
 
     # Определим оптимизатор и функцию потерь
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
-    loss_fn = nn.CrossEntropyLoss()
+    criterion  = MulticlassDiceLoss(from_logits=True)
 
     print("4. Цикл обучения")
 
     epochs = 2  # Для примера
-    max_grad_norm = 1.0
 
     for epoch in range(epochs):
         print(f"\n=== Epoch {epoch + 1}/{epochs} ===")
@@ -160,22 +189,13 @@ for i in old_unique_labels:
             labels = batch['labels'].to(device)
 
             optimizer.zero_grad()
+            logits = model(input_ids=input_ids,
+                           attention_mask=attention_mask).logits
 
-            outputs = model(
-                input_ids=input_ids,
-                attention_mask=attention_mask,
-                labels=labels
-            )
-
-
-            logits = outputs.logits
-            loss = loss_fn(logits, labels)
-            # Обратный проход
+            loss = criterion(logits, labels)
             loss.backward()
             optimizer.step()
-
-            # Сохраняем статистику
-            running_loss += loss.item()
+            running_loss += loss.item() * input_ids.size(0)
 
             # ---- Вычислим F1 (weighted) на текущем batch ----
             preds = torch.argmax(logits, dim=1).cpu().numpy()
@@ -185,13 +205,13 @@ for i in old_unique_labels:
             f1_micro = f1_score(gold, preds, average='micro')
 
             # Выведем статистику
-            if step % 20 == 4:
-                print(
-                    f"Item: {i}, Batch {step + 1}/{len(train_loader)}, Loss: {loss.item():.4f}, F1 (weighted): {f1_weighted:.4f}, "
-                    f"F1 (macro): {f1_macro:.4f}, F1 (micro): {f1_micro:.4f}")
+            print(
+                f"Item: {i}, Batch {step + 1}/{len(train_loader)}, Loss: {loss.item():.4f}, F1 (weighted): {f1_weighted:.4f}, "
+                f"F1 (macro): {f1_macro:.4f}, F1 (micro): {f1_micro:.4f}")
 
         # ---- Валидация на val_loader в конце эпохи (по желанию) ----
         model.eval()
+        val_loss = 0.0
         val_preds = []
         val_labels = []
 
@@ -201,11 +221,11 @@ for i in old_unique_labels:
                 attention_mask = batch['attention_mask'].to(device)
                 labels = batch['labels'].to(device)
 
-                outputs = model(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask
-                )
-                logits = outputs.logits
+                logits = model(input_ids=input_ids,
+                               attention_mask=attention_mask).logits
+
+                loss = criterion(logits, labels)
+                val_loss += loss.item() * input_ids.size(0)
 
                 preds = torch.argmax(logits, dim=1).cpu().numpy()
                 gold = labels.cpu().numpy()

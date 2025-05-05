@@ -3,12 +3,14 @@ import json
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from torch.nn.utils import clip_grad_norm_
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
+import torch.nn.functional as F
+import numpy as np
 
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, AdamW
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 df = pd.read_csv(
     "/Users/denismazepa/Desktop/Py_projects/VKR/src/preprocessing/train_big_augmented_uncut_preprocessed_final_level_2_3.csv",
@@ -27,7 +29,38 @@ with open("/Users/denismazepa/Desktop/Py_projects/VKR/grnti/GRNTI_1_ru.json", 'r
 #
 # list_of_grnti_indexes = true_models_df["Index_name"].unique().tolist()
 #
+#
 # print(list_of_grnti_indexes)
+
+class FocalLoss(nn.Module):
+    def __init__(self, alpha=None, gamma=2.0, reduction='mean'):
+        """
+        alpha (Tensor): Веса классов (размер [C]).
+        gamma (float): Параметр фокусировки (чем больше, тем сильнее штрафуются простые примеры).
+        reduction (str): 'mean', 'sum' или 'none'.
+        """
+        super(FocalLoss, self).__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.reduction = reduction
+
+    def forward(self, inputs, targets):
+        ce_loss = F.cross_entropy(inputs, targets, reduction='none')  # [B]
+        pt = torch.exp(-ce_loss)  # p_t = вероятность правильного класса
+        focal_loss = (1 - pt) ** self.gamma * ce_loss  # Focal Loss
+
+        if self.alpha is not None:
+            alpha = self.alpha[targets]  # Выбираем alpha для каждого элемента батча
+            focal_loss = alpha * focal_loss
+
+        if self.reduction == 'mean':
+            return focal_loss.mean()
+        elif self.reduction == 'sum':
+            return focal_loss.sum()
+        else:
+            return focal_loss
+
+
 for i in old_unique_labels:
     new_df = df[df["RGNTI1"] == i]
 
@@ -44,7 +77,7 @@ for i in old_unique_labels:
     # train_df, test_df = train_test_split(
     #     df, test_size=0.15, random_state=42, stratify=df['label_id']
     # )
-    # print(unique_labels)
+    print(unique_labels)
     if len(unique_labels) == 1:
         data = data._append({
             "Index_name": i,
@@ -132,19 +165,23 @@ for i in old_unique_labels:
         model_name,
         num_labels=len(unique_labels)  # важно указать, сколько у нас классов
     )
+    class_counts = train_df['label_id'].value_counts().sort_index().values
+    class_weights = 1.0 / np.sqrt(class_counts)  # Менее агрессивно, чем 1.0 / class_counts
 
-    # Перенесём на GPU при возможности
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
 
+    weights_tensor = torch.FloatTensor(class_weights).to(device)
+
+    # Перенесём на GPU при возможности
+
     # Определим оптимизатор и функцию потерь
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
-    loss_fn = nn.CrossEntropyLoss()
+    criterion = FocalLoss(alpha=weights_tensor, gamma=2)
 
     print("4. Цикл обучения")
 
     epochs = 2  # Для примера
-    max_grad_norm = 1.0
 
     for epoch in range(epochs):
         print(f"\n=== Epoch {epoch + 1}/{epochs} ===")
@@ -160,22 +197,13 @@ for i in old_unique_labels:
             labels = batch['labels'].to(device)
 
             optimizer.zero_grad()
+            logits = model(input_ids=input_ids,
+                           attention_mask=attention_mask).logits
 
-            outputs = model(
-                input_ids=input_ids,
-                attention_mask=attention_mask,
-                labels=labels
-            )
-
-
-            logits = outputs.logits
-            loss = loss_fn(logits, labels)
-            # Обратный проход
+            loss = criterion(logits, labels)
             loss.backward()
             optimizer.step()
-
-            # Сохраняем статистику
-            running_loss += loss.item()
+            running_loss += loss.item() * input_ids.size(0)
 
             # ---- Вычислим F1 (weighted) на текущем batch ----
             preds = torch.argmax(logits, dim=1).cpu().numpy()
@@ -185,13 +213,14 @@ for i in old_unique_labels:
             f1_micro = f1_score(gold, preds, average='micro')
 
             # Выведем статистику
-            if step % 20 == 4:
+            if step % 70 == 2:
                 print(
                     f"Item: {i}, Batch {step + 1}/{len(train_loader)}, Loss: {loss.item():.4f}, F1 (weighted): {f1_weighted:.4f}, "
                     f"F1 (macro): {f1_macro:.4f}, F1 (micro): {f1_micro:.4f}")
 
         # ---- Валидация на val_loader в конце эпохи (по желанию) ----
         model.eval()
+        val_loss = 0.0
         val_preds = []
         val_labels = []
 
@@ -201,11 +230,11 @@ for i in old_unique_labels:
                 attention_mask = batch['attention_mask'].to(device)
                 labels = batch['labels'].to(device)
 
-                outputs = model(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask
-                )
-                logits = outputs.logits
+                logits = model(input_ids=input_ids,
+                               attention_mask=attention_mask).logits
+
+                loss = criterion(logits, labels)
+                val_loss += loss.item() * input_ids.size(0)
 
                 preds = torch.argmax(logits, dim=1).cpu().numpy()
                 gold = labels.cpu().numpy()

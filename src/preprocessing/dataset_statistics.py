@@ -10,6 +10,7 @@ class DataAnalyzer:
 
     def plot_bar_chart_frequency(self, column_name: str) -> None:
         """Подсчитываем встречаемость каждого числа"""
+        self.df = self.df[~self.df["RGNTI1"].isin(['59', '86', '58', '0'])]
         value_counts = self.df[column_name].value_counts()
 
         plt.figure(figsize=(10, 6))
@@ -17,7 +18,7 @@ class DataAnalyzer:
 
         plt.xlabel("RGNTI1") # Используем имя столбца для метки оси X
         plt.ylabel('Частота')
-        plt.title('Частота встречаемости в тестовом наборе, уровень 1')
+        plt.title('Частота встречаемости в тренировочном наборе, уровень 1')
 
         plt.show()
         
@@ -99,9 +100,10 @@ class DataAnalyzer:
 # df = pd.read_csv(
 #     '/datasets/datasets_final/for_1_level/test_refactored_lematize_cut_final.csv')
 df_2 = pd.read_csv(
-    '/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_colide/train_colide.csv')
+    '/Users/denismazepa/Desktop/Py_projects/VKR/src/preprocessing/train_big_augmented_uncut_preprocessed_final_level_1.csv')
+
 statisticer = DataAnalyzer(df_2)
-statisticer.analyze_tokens("Тренировочный датасет")
+# statisticer.analyze_tokens("Тренировочный датасет")
 # analyze_tokens(df, "Test dataset")
 # statisticer.word_counting("Train dataset")
 # word_counting(df, "Test dataset")

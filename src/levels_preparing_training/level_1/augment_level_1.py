@@ -290,25 +290,29 @@ class TextPreprocessor:
         return self.df
 
 
-# df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datatsets_from_git/train/train_ru_work.csv",
-#                  sep="\t", on_bad_lines='skip').head(170)
+df = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_colide/train_mixed_data.csv",
+                 sep="\t", on_bad_lines='skip')
 # dfx = pd.read_csv("numbers.csv")
 # print(dfx['keywords'])
-df_new = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_1_level/train_refactored_lematize_no_numbers.csv")
-print(df_new.columns)
-print(df_new["body"].head())
-print(df_new["RGNTI1"].value_counts())
-# preprocessor = TextPreprocessor(df)
-#
-# # Последовательно применяем функции
-# preprocessor.drop_nan()
-# print(1)
-# preprocessor.split_column_value("RGNTI1", "RGNTI1_2")
-# print(7)
-# preprocessor.remove_second_index(["RGNTI1", "RGNTI2", "RGNTI3"])
-# print(8)
-# print(len(df["RGNTI1"].value_counts()))
-# print(2)
+# df_new = pd.read_csv("/Users/denismazepa/Desktop/Py_projects/VKR/datasets/datasets_final/for_1_level/train_refactored_lematize_no_numbers.csv")
+# print(df_new.columns)
+# print(df_new["body"].head())
+# print(df_new["RGNTI1"].value_counts())
+print(df.columns)
+preprocessor = TextPreprocessor(df)
+
+# Последовательно применяем функции
+preprocessor.drop_nan()
+print(1)
+preprocessor.split_column_value('RGNTI1', 'RGNTI1_2')
+print(7)
+preprocessor.remove_second_index(['RGNTI1', "RGNTI2", "RGNTI3"])
+print(8)
+s = preprocessor.return_dataset()
+s.drop(s[s["RGNTI1"].isin(["58", "00", "59", "86", "69", "12", "75", "67", "62", "19"])].index, inplace=True)
+print(len(s["RGNTI1"].value_counts()))
+print(2)
+print(s["RGNTI1"].value_counts())
 # preprocessor.remove_english_strings()
 # s = preprocessor.return_dataset()
 #

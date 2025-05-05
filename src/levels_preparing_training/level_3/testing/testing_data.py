@@ -144,6 +144,7 @@ def usual_models() -> None:
             if sum_f1_small > small_f1:
                 small_f1 = sum_f1_small
                 best_variant_small = f"Лучшая модель для маленьких датасетов: {k}, Лучший векторизатор: {j}, F1: средняя {small_f1 / 10}"
+
         print("_______________________________________")
     print(best_variant_all)
     print(best_variant_big)
@@ -154,6 +155,7 @@ def comparing_tf_idf() -> None:
     for k in dict_of_models.keys():
         sum = 0
         for i in dict_of_frames.keys():
+            print(i)
             X = TfidfVectorizer(max_features=5000).fit_transform(dict_of_frames[i][0]['body'])
             y = dict_of_frames[i][0]['RGNTI3']
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -164,6 +166,7 @@ def comparing_tf_idf() -> None:
             f1 = f1_score(y_test, y_pred, average='weighted')
 
             sum += f1
+            df.to_csv(f'{i}.csv')
         print(k, sum / 12)
 
 comparing_tf_idf()
